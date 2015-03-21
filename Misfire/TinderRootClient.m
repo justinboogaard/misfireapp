@@ -168,7 +168,7 @@
 
 - (BOOL) sendMessageToUser:(NSString*)matchID withMessage:(NSString*)message {
     
-    sendRequestToUrl:[NSString stringWithFormat:@"user/matches/%@", matchID] withPayload:[NSString stringWithFormat:@"{\"messages\":\"%@\"}", message];
+   // sendRequestToUrl:[NSString stringWithFormat:@"user/matches/%@", matchID] withPayload:[NSString stringWithFormat:@"{\"messages\":\"%@\"}", message];
     
     return true;
 }

@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "TinderRootClient.h"
+#import <FacebookSDK/FacebookSDK.h>
 
 @interface ViewController ()
 {
@@ -20,6 +21,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    FBLoginView *loginView = [[FBLoginView alloc] init];
+    loginView.center = self.view.center;
+    [self.view addSubview:loginView];
     
     facebookToken = @"CAAGm0PX4ZCpsBALaed0BPQTxZBFveiBqHrgGoCqmAN7jfVTdNY7k2upZBE7aYlZBv4ZCO0ZAY0une57eWEZCIfvGtDnc3Atp9UWCa1w1lq6C4EnKGXJlZBr8FB1E4tEZBLRWF9YtU6QRxE7G9XpK7VZCZAz8Ixd7pRfZCJNOyNdw15tk9GjClD7LA2MHXWYZAy0M3gY7iZAW1t0QrIn8O0KBvIeZCWZC";
     
