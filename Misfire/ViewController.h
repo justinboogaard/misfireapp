@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <FacebookSDK/FacebookSDK.h>
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController <FBLoginViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIButton *updatesButton;
 @property (weak, nonatomic) IBOutlet UIButton *connectionButton;

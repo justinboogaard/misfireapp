@@ -23,30 +23,25 @@
     [super viewDidLoad];
     
     FBLoginView *loginView = [[FBLoginView alloc] init];
+    loginView.delegate = self;
     loginView.center = self.view.center;
     [self.view addSubview:loginView];
     
     FBSession *session = [[FBSession alloc] initWithAppID:@"1614464005457920" permissions:nil defaultAudience:FBSessionDefaultAudienceEveryone urlSchemeSuffix:nil tokenCacheStrategy:nil];
     
+    [session closeAndClearTokenInformation];
+    
     [session openWithCompletionHandler:^(FBSession *session, FBSessionState status, NSError *error) {
         facebookToken = [session accessTokenData].accessToken;
-        
         NSLog(@"openWithCompletionHandler");
-        
-        
         
         if ([session isOpen]) {
             NSLog(@"session is open");
         }
     }];
     
-    
-    
     facebookID = @"1328755925";
-    
-    
 }
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -84,5 +79,12 @@
     }
 }
 
+// PRAGMA MARK - FBLoginViewDelegate
+
+- (void) loginViewFetchedUserInfo:(FBLoginView *)loginView user:(id<FBGraphUser>)user {
+    NSLog(@"fetched user info from facebook:");
+    
+    NSLog(@"access token: %@" ,[[FBSession activeSession] accessTokenData].accessToken);
+}
 
 @end

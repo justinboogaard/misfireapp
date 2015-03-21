@@ -46,23 +46,25 @@
     NSURL *url = [NSURL URLWithString:@"https://api.gotinder.com/auth"];
     
     //initialize a request from url
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[url standardizedURL]];
+    NSURLRequest *request = [NSMutableURLRequest requestWithURL:[url standardizedURL]];
+    NSMutableURLRequest *mutableRequest = [request mutableCopy];
     
     //set http method
-    [request setHTTPMethod:@"POST"];
+    [mutableRequest setHTTPMethod:@"POST"];
     
     //set request content type we MUST set this value.
-    [request setValue:@"application/x-www-form-urlencoded; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
+    [mutableRequest setValue:@"application/json; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
+    [mutableRequest addValue:@"Tinder/3.0.4 (iPhone; iOS 7.1; Scale/2.00)" forHTTPHeaderField:@"User-Agent"];
     
     //initialize a post data
     NSString *postData = [NSString stringWithFormat:@"{\"facebook_token\":\"%@\",\"facebook_id\":\"%@\"}", self.facebookToken, self.facebookID];
     
-    NSLog(self.facebookToken);
-    NSLog(self.facebookID);
-    
     //set post data of request
-    [request setHTTPBody:[postData dataUsingEncoding:NSUTF8StringEncoding]];
+    [mutableRequest setHTTPBody:[postData dataUsingEncoding:NSUTF8StringEncoding]];
     
+    request = [mutableRequest copy];
+    
+    NSLog(@"Headers: %@", request.allHTTPHeaderFields);
     NSLog(@"Method: %@", request.HTTPMethod);
     NSLog(@"URL: %@", request.URL.absoluteString);
     NSLog(@"Body: %@", [[NSString alloc] initWithData:request.HTTPBody encoding:NSUTF8StringEncoding]);
@@ -171,7 +173,7 @@
 #pragma mark - NSURLConnection Delegate Methods
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
-    [self.responseData setLength:0];
+//    [self.responseData setLength:0];
     NSLog(@"Connection did receive response: %@", response);
 }
 
