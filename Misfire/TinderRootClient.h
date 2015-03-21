@@ -53,7 +53,6 @@ typedef enum
 
 - (id) initWithAuthToken: (NSString *) authToken;
 - (id) initWithFacebookData: (NSString *) facebookToken facebookID:(NSString *) facebookID;
-- (id) initWithFullData: (NSString *) facebookToken facebookID:(NSString *) facebookID authToken: (NSString *) authToken;
 
 #pragma mark Additional Methods
 

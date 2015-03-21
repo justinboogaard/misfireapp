@@ -34,19 +34,6 @@
     return self;
 }
 
-- (id) initWithFullData: (NSString *) facebookToken facebookID:(NSString *) facebookID authToken: (NSString *) authToken
-{
-    if (self = [super init]) {
-        
-        self.facebookToken = facebookToken;
-        self.facebookID = facebookID;
-        
-        self.api_token = authToken;
-    }
-    
-    return self;
-}
-
 #pragma mark - Additional Methods
 
 - (bool) authenticate
@@ -64,14 +51,21 @@
     //set http method
     [request setHTTPMethod:@"POST"];
     
-    //initialize a post data
-    NSString *postData = [NSString stringWithFormat:@"facebook_token=%@&facebook_id=%@", self.facebookToken, self.facebookID];
-    
     //set request content type we MUST set this value.
     [request setValue:@"application/x-www-form-urlencoded; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
     
+    //initialize a post data
+    NSString *postData = [NSString stringWithFormat:@"{\"facebook_token\":\"%@\",\"facebook_id\":\"%@\"}", self.facebookToken, self.facebookID];
+    
+    NSLog(self.facebookToken);
+    NSLog(self.facebookID);
+    
     //set post data of request
     [request setHTTPBody:[postData dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    NSLog(@"Method: %@", request.HTTPMethod);
+    NSLog(@"URL: %@", request.URL.absoluteString);
+    NSLog(@"Body: %@", [[NSString alloc] initWithData:request.HTTPBody encoding:NSUTF8StringEncoding]);
     
     //initialize a connection from request
     NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
@@ -178,10 +172,12 @@
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
     [self.responseData setLength:0];
+    NSLog(@"Connection did receive response: %@", response);
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
     [self.responseData appendData:data];
+    NSLog(@"Connection did receive data: %@", data);
 }
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
@@ -190,10 +186,14 @@
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
     
+    NSLog(@"connection did finish loading");
+    
     NSError __autoreleasing *e = nil;
     id result = [NSJSONSerialization JSONObjectWithData:self.responseData options:NSJSONReadingMutableContainers error:&e];
     
     NSDictionary *jsonDictionary  = (NSDictionary *) result; //convert to an array
+    
+    NSLog(@"Dictionary: %@", [jsonDictionary description]);
     
     if (self.currentConnection == Authentication) {
         

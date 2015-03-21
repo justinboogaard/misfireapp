@@ -8,7 +8,7 @@
 
 #import "ViewController.h"
 #import "TinderRootClient.h"
-#import <FacebookSDK/FacebookSDK.h>
+#import "AppDelegate.h"
 
 @interface ViewController ()
 {
@@ -26,11 +26,27 @@
     loginView.center = self.view.center;
     [self.view addSubview:loginView];
     
-    facebookToken = @"CAAGm0PX4ZCpsBALaed0BPQTxZBFveiBqHrgGoCqmAN7jfVTdNY7k2upZBE7aYlZBv4ZCO0ZAY0une57eWEZCIfvGtDnc3Atp9UWCa1w1lq6C4EnKGXJlZBr8FB1E4tEZBLRWF9YtU6QRxE7G9XpK7VZCZAz8Ixd7pRfZCJNOyNdw15tk9GjClD7LA2MHXWYZAy0M3gY7iZAW1t0QrIn8O0KBvIeZCWZC";
+    FBSession *session = [[FBSession alloc] initWithAppID:@"1614464005457920" permissions:nil defaultAudience:FBSessionDefaultAudienceEveryone urlSchemeSuffix:nil tokenCacheStrategy:nil];
     
-    facebookID = @"1807423454";
+    [session openWithCompletionHandler:^(FBSession *session, FBSessionState status, NSError *error) {
+        facebookToken = [session accessTokenData].accessToken;
+        
+        NSLog(@"openWithCompletionHandler");
+        
+        
+        
+        if ([session isOpen]) {
+            NSLog(@"session is open");
+        }
+    }];
+    
+    
+    
+    facebookID = @"1328755925";
+    
     
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -41,6 +57,7 @@
     client = [[TinderRootClient alloc] initWithFacebookData:facebookToken facebookID:facebookID];
     [client.connectionFeedBackOutlets addObject:self];
     [client authenticate];
+    NSLog(@"connection created!");
     
     
 }
@@ -53,7 +70,11 @@
 - (IBAction)loadGUI:(id)sender {
     
     UIImageView *imgview = [[UIImageView alloc] initWithFrame:CGRectMake(00, 300, 400, 400)];
-    [imgview setImage:client.images[0]];
+    
+    if (client.images.count > 0) {
+        [imgview setImage:client.images[0]];
+    }
+    
     [imgview setContentMode:UIViewContentModeScaleAspectFit];
     [self.view addSubview:imgview];
     
