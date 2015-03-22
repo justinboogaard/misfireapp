@@ -27,20 +27,24 @@
     loginView.center = self.view.center;
     [self.view addSubview:loginView];
     
-    FBSession *session = [[FBSession alloc] initWithAppID:@"1614464005457920" permissions:nil defaultAudience:FBSessionDefaultAudienceEveryone urlSchemeSuffix:nil tokenCacheStrategy:nil];
-    
-    [session closeAndClearTokenInformation];
+    facebookID = @"706352243";
+
+    FBSession *session = [[FBSession alloc] initWithAppID:@"464891386855067" permissions:@[@"basic_info",@"email",@"public_profile",@"user_about_me", @"user_activities",@"user_birthday",@"user_education_history",@"user_friends",@"user_interests",@"user_likes",@"user_location",@"user_photos",@"user_relationship_details"] defaultAudience:FBSessionDefaultAudienceEveryone urlSchemeSuffix:nil tokenCacheStrategy:nil];
     
     [session openWithCompletionHandler:^(FBSession *session, FBSessionState status, NSError *error) {
+        
+        if (error != nil) {
+            NSLog(@"%@", error);
+        }
+        
         facebookToken = [session accessTokenData].accessToken;
+        
         NSLog(@"openWithCompletionHandler");
         
         if ([session isOpen]) {
             NSLog(@"session is open");
         }
     }];
-    
-    facebookID = @"1328755925";
 }
 
 - (void)didReceiveMemoryWarning {
@@ -49,12 +53,11 @@
 }
 
 - (IBAction)createConnection:(id)sender {
+    facebookToken = [[FBSession activeSession] accessTokenData].accessToken;
     client = [[TinderRootClient alloc] initWithFacebookData:facebookToken facebookID:facebookID];
     [client.connectionFeedBackOutlets addObject:self];
     [client authenticate];
     NSLog(@"connection created!");
-    
-    
 }
 
 - (IBAction)fetchUpdates:(id)sender {
@@ -82,9 +85,15 @@
 // PRAGMA MARK - FBLoginViewDelegate
 
 - (void) loginViewFetchedUserInfo:(FBLoginView *)loginView user:(id<FBGraphUser>)user {
-    NSLog(@"fetched user info from facebook:");
-    
-    NSLog(@"access token: %@" ,[[FBSession activeSession] accessTokenData].accessToken);
+}
+
+- (void) loginViewShowingLoggedInUser:(FBLoginView *)loginView {
+    NSLog(@"Logged In");
+}
+
+- (void) loginViewShowingLoggedOutUser:(FBLoginView *)loginView {
+    NSLog(@"Logged Out");
+    [[FBSession activeSession] closeAndClearTokenInformation];
 }
 
 @end

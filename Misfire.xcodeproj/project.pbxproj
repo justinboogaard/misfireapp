@@ -7,8 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		396F8FAB1ABC95DF00F2EDEB /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 396F8FAA1ABC95DF00F2EDEB /* FacebookSDK.framework */; };
-		396F8FAD1ABC962F00F2EDEB /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 396F8FAA1ABC95DF00F2EDEB /* FacebookSDK.framework */; };
+		9ECB3B481ABE3F5000DAA0AC /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9ECB3B471ABE3F5000DAA0AC /* FacebookSDK.framework */; };
 		D951678F1A92F03700C3754D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D951678E1A92F03700C3754D /* main.m */; };
 		D95167921A92F03700C3754D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D95167911A92F03700C3754D /* AppDelegate.m */; };
 		D95167951A92F03700C3754D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D95167941A92F03700C3754D /* ViewController.m */; };
@@ -32,7 +31,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		396F8FAA1ABC95DF00F2EDEB /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../../Documents/FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
+		9ECB3B471ABE3F5000DAA0AC /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 		D95167891A92F03700C3754D /* Misfire.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Misfire.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D951678D1A92F03700C3754D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D951678E1A92F03700C3754D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -59,7 +58,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				396F8FAB1ABC95DF00F2EDEB /* FacebookSDK.framework in Frameworks */,
+				9ECB3B481ABE3F5000DAA0AC /* FacebookSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -67,7 +66,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				396F8FAD1ABC962F00F2EDEB /* FacebookSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -77,7 +75,7 @@
 		396F8FAC1ABC95E900F2EDEB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				396F8FAA1ABC95DF00F2EDEB /* FacebookSDK.framework */,
+				9ECB3B471ABE3F5000DAA0AC /* FacebookSDK.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -378,6 +376,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/justinboogaard/Documents/FacebookSDK,
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = Misfire/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -392,6 +391,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/justinboogaard/Documents/FacebookSDK,
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = Misfire/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
