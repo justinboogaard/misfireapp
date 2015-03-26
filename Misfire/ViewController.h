@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *updatesButton;
 @property (weak, nonatomic) IBOutlet UIButton *connectionButton;
 @property (weak, nonatomic) IBOutlet UIButton *loadDataButton;
+@property (weak, nonatomic) IBOutlet UIButton *sendCuteMessageButton;
 
 @property (weak, nonatomic) IBOutlet UILabel *connectedLabel;
 @property (weak, nonatomic) IBOutlet UILabel *connectionSuccessLabel;
@@ -24,6 +25,7 @@
 - (IBAction)createConnection:(id)sender;
 - (IBAction)fetchUpdates:(id)sender;
 - (IBAction)loadGUI:(id)sender;
+- (IBAction)sendCuteMessage:(id)sender;
 
 
 @end

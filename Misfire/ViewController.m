@@ -77,7 +77,7 @@
 }
 
 - (IBAction)fetchUpdates:(id)sender {
-    [client fetchUpdates];
+     [client sendRequestToUrl:@"updates" withPayload:@"{\"last_activity_date\": \"2015-01-06T22:51:57Z\"}"];
     
 }
 
@@ -96,6 +96,14 @@
         self.connectionSuccessLabel.text = @"Success!";
         self.accountNameLabel.text = client.fullName;
     }
+    
+}
+
+- (IBAction)sendCuteMessage:(id)sender{
+    
+    NSLog(@"TinderToken: %@", client.api_token);
+    
+   [client sendRequestToUrl:@"user/matches/530ab27b5899d6107c0000d653dca78a404a4e4a53e6831a" withPayload:@"{\"message\": \"This is a cute test message for a hack we are trying to build for the women of Tinder.\"}"];
 }
 
 // PRAGMA MARK - FBLoginViewDelegate

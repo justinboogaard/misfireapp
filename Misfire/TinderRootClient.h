@@ -53,10 +53,12 @@ typedef enum
 
 - (id) initWithAuthToken: (NSString *) authToken;
 - (id) initWithFacebookData: (NSString *) facebookToken facebookID:(NSString *) facebookID;
+- (id) sendCuteMessage;
+- (void) sendRequestToUrl:(NSString *) auth withPayload:(NSString *) payload;
 
 #pragma mark Additional Methods
 
 - (bool) authenticate;
-- (bool) fetchUpdates;
+
 
 @end

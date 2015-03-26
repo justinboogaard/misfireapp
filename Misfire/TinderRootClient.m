@@ -80,48 +80,8 @@
     return true;
 }
 
-- (bool) fetchUpdates
-{
-    self.currentConnection = UpdateFetch;
-    
-    //initialize new mutable data
-    NSMutableData *data = [[NSMutableData alloc] init];
-    self.responseData = data;
-    
-    //initialize url that is going to be fetched.
-    NSURL *url = [NSURL URLWithString:@"https://api.gotinder.com/updates"];
-    
-    // Create request variable containing our immutable request
-    //This could also be a paramter of your method 
-    NSURLRequest *request = [NSURLRequest requestWithURL:url];
-    
-    // Create a mutable copy of the immutable request and add more headers
-    NSMutableURLRequest *mutableRequest = [request mutableCopy];
-    
-    
-    [mutableRequest setHTTPMethod:@"POST"];
-    [mutableRequest addValue:[NSString stringWithFormat:@"%@", self.api_token]  forHTTPHeaderField:@"X-Auth-Token"];
-    [mutableRequest addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-    [mutableRequest addValue:@"Tinder/3.0.4 (iPhone; iOS 7.1; Scale/2.00)" forHTTPHeaderField:@"User-Agent"];
-    NSString *postData = @"{\"last_activity_date\": \"2015-01-06T22:51:57Z\"}";
-    [mutableRequest setHTTPBody:[postData dataUsingEncoding:NSUTF8StringEncoding]];
-    
-    NSLog(@"Method: %@", mutableRequest.HTTPMethod);
-    NSLog(@"URL: %@", mutableRequest.URL.absoluteString);
-    NSLog(@"Body: %@", [[NSString alloc] initWithData:mutableRequest.HTTPBody encoding:NSUTF8StringEncoding]);
-    
-    // Now set our request variable with an (immutable) copy of the altered request
-    request = [mutableRequest copy];
-    
-    //initialize a connection from request
-    NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
-    self.connection = connection;
 
-    [connection start];
-    
-    return true;
-}
-
+//generic send to url
 - (void) sendRequestToUrl:(NSString*)address withPayload:(NSString*)payload
 {
     //initialize new mutable data
@@ -139,7 +99,7 @@
     
     // Create a mutable copy of the immutable request and add more headers
     NSMutableURLRequest *mutableRequest = [request mutableCopy];
-    
+        
     [mutableRequest setHTTPMethod:@"POST"];
     [mutableRequest addValue:[NSString stringWithFormat:@"%@", self.api_token]  forHTTPHeaderField:@"X-Auth-Token"];
     [mutableRequest addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
