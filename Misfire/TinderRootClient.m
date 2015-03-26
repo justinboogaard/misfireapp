@@ -179,7 +179,6 @@
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
     [self.responseData appendData:data];
-    NSLog(@"Connection did receive data: %@", data);
 }
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {

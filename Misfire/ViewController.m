@@ -26,10 +26,26 @@
     loginView.delegate = self;
     loginView.center = self.view.center;
     [self.view addSubview:loginView];
-    
-    facebookID = @"706352243";
 
     FBSession *session = [[FBSession alloc] initWithAppID:@"464891386855067" permissions:@[@"basic_info",@"email",@"public_profile",@"user_about_me", @"user_activities",@"user_birthday",@"user_education_history",@"user_friends",@"user_interests",@"user_likes",@"user_location",@"user_photos",@"user_relationship_details"] defaultAudience:FBSessionDefaultAudienceEveryone urlSchemeSuffix:nil tokenCacheStrategy:nil];
+    
+    
+    //get ID
+    if (FBSession.activeSession.isOpen) {
+        
+        [[FBRequest requestForMe] startWithCompletionHandler:
+         ^(FBRequestConnection *connection,
+           NSDictionary<FBGraphUser> *user,
+           NSError *error) {
+             if (!error) {
+                 facebookID = user.objectID;
+             }
+         }];
+    }
+    
+    
+    
+    
     
     [session openWithCompletionHandler:^(FBSession *session, FBSessionState status, NSError *error) {
         
