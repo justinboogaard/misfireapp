@@ -75,7 +75,6 @@
     self.connection = connection;
     
     //start the connection
-    [connection start];
     self.currentConnection = Authentication;
     
     return true;
@@ -119,8 +118,6 @@
     NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
     self.connection = connection;
     
-    [connection start];
-    
 }
 
 - (BOOL) sendMessageToUser:(NSString*)matchID withMessage:(NSString*)message {
@@ -131,6 +128,7 @@
 }
 
 - (id) sendCuteMessage {
+    
     return self;
 }
 
@@ -184,6 +182,8 @@
             UIImage *img = [[UIImage alloc] initWithData:data];
             
             [tempImageArray addObject:img];
+            
+            
         }
         
         self.images = tempImageArray;
@@ -202,10 +202,10 @@
 
     self.responseData = nil;
     
-    _tinderToken = self.api_token;
-    
-    NSLog(@"TinderToken: %@", _tinderToken);
+
 }
+
+
 
 
 @end

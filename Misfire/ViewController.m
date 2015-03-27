@@ -102,9 +102,7 @@
 }
 
 - (IBAction)sendCuteMessage:(id)sender{
-    
-    NSLog(@"TinderTokenfromSendCuteMessage: %@", client.tinderToken);
-    
+        
    [client sendRequestToUrl:@"user/matches/530ab27b5899d6107c0000d653dca78a404a4e4a53e6831a" withPayload:@"{\"message\": \"This is a cute test message for a hack we are trying to build for the women of Tinder.\"}"];
 }
 
