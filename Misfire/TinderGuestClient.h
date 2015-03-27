@@ -10,4 +10,6 @@
 
 @interface TinderGuestClient : NSObject
 
+@property (strong, nonatomic) NSString *authToken;
+
 @end

@@ -10,4 +10,13 @@
 
 @implementation TinderGuestClient
 
+- (id) initWithAuthToken: (NSString *) authToken
+{
+    if (self = [super init]) {
+        self.authToken = authToken;
+    }
+    
+    return self;
+}
+
 @end

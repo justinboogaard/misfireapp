@@ -79,12 +79,12 @@
 }
 
 - (IBAction)fetchUpdates:(id)sender {
-     [client sendRequestToUrl:@"updates" withPayload:@"{\"last_activity_date\": \"0\"}" forAuth:client.api_token];
+     [client sendRequestToUrl:@"updates" withPayload:@"{\"last_activity_date\": \"0\"}"];
     
 }
 
 - (IBAction)sendCuteMessage:(id)sender{
-    [client sendRequestToUrl:@"user/matches/530ab27b5899d6107c0000d653dca78a404a4e4a53e6831a" withPayload:@"{\"message\": \"This is a cute test message for a hack we are trying to build for the women of Tinder.\"}" forAuth:client.api_token];
+    [client sendRequestToUrl:@"user/matches/530ab27b5899d6107c0000d653dca78a404a4e4a53e6831a" withPayload:@"{\"message\": \"This is a cute test message for a hack we are trying to build for the women of Tinder.\"}"];
     
     NSLog(@"TinderTokenFromSendCuteMessage: %@", client.api_token);
 }

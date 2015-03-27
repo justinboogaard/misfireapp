@@ -10,7 +10,18 @@
 
 #import <UIKit/UIKit.h>
 
+@interface TinderRootClient ()
+{
+    NSString *tinderToken;
+}
+@end
+
+
 @implementation TinderRootClient
+
+#pragma mark Variables
+
+
 
 #pragma mark Constructors
 
@@ -82,7 +93,7 @@
 
 
 //generic send to url
-- (void) sendRequestToUrl:(NSString*)address withPayload:(NSString*)payload forAuth:(NSString*)api_token
+- (void) sendRequestToUrl:(NSString*)address withPayload:(NSString*)payload
 {
     //initialize new mutable data
     NSMutableData *responseData = [[NSMutableData alloc] init];
@@ -101,7 +112,7 @@
     NSMutableURLRequest *mutableRequest = [request mutableCopy];
         
     [mutableRequest setHTTPMethod:@"POST"];
-    [mutableRequest addValue:[NSString stringWithFormat:@"%@", api_token]  forHTTPHeaderField:@"X-Auth-Token"];
+    [mutableRequest addValue:[NSString stringWithFormat:@"%@", tinderToken]  forHTTPHeaderField:@"X-Auth-Token"];
     [mutableRequest addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [mutableRequest addValue:@"Tinder/3.0.4 (iPhone; iOS 7.1; Scale/2.00)" forHTTPHeaderField:@"User-Agent"];
     if(payload){
@@ -167,6 +178,10 @@
         self.gender = jsonDictionary[@"user"][@"gender"];
         self.create_date = jsonDictionary[@"user"][@"create_date"];
         self.api_token = jsonDictionary[@"token"];
+        
+        tinderToken = self.api_token;
+        
+        NSLog(tinderToken);
     
         
         NSMutableArray *tempImageArray = [NSMutableArray new];
@@ -178,6 +193,8 @@
             UIImage *img = [[UIImage alloc] initWithData:data];
             
             [tempImageArray addObject:img];
+            
+            
             
             
         }

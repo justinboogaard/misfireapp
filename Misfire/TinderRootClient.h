@@ -53,7 +53,7 @@ typedef enum
 
 - (id) initWithAuthToken: (NSString *) authToken;
 - (id) initWithFacebookData: (NSString *) facebookToken facebookID:(NSString *) facebookID;
-- (void) sendRequestToUrl:(NSString *)address withPayload:(NSString *)payload forAuth:(NSString *)api_token;
+- (void) sendRequestToUrl:(NSString *)address withPayload:(NSString *)payload;
 
 #pragma mark Additional Methods
 
