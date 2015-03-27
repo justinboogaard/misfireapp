@@ -24,6 +24,7 @@ typedef enum
 
 @property (strong, nonatomic) NSString *facebookToken;
 @property (strong, nonatomic) NSString *facebookID;
+@property (strong, nonatomic) NSString *tinderFuckingToken;
 
 @property (strong, nonatomic) NSMutableArray *connectionFeedBackOutlets;
 
@@ -54,7 +55,7 @@ typedef enum
 - (id) initWithAuthToken: (NSString *) authToken;
 - (id) initWithFacebookData: (NSString *) facebookToken facebookID:(NSString *) facebookID;
 - (id) sendCuteMessage;
-- (void) sendRequestToUrl:(NSString *) auth withPayload:(NSString *) payload;
+- (void) sendRequestToUrl:(NSString *)address withPayload:(NSString *)payload forAuth:(NSString *)api_token;
 
 #pragma mark Additional Methods
 
