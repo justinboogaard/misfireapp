@@ -14,6 +14,7 @@
 
 #pragma mark Constructors
 
+
 - (id) initWithAuthToken: (NSString *) authToken
 {
     if (self = [super init]) {
@@ -172,6 +173,7 @@
         self.gender = jsonDictionary[@"user"][@"gender"];
         self.create_date = jsonDictionary[@"user"][@"create_date"];
         self.api_token = jsonDictionary[@"token"];
+    
         
         NSMutableArray *tempImageArray = [NSMutableArray new];
         for (id element in jsonDictionary[@"user"][@"photos"]) {
@@ -199,6 +201,10 @@
     }
 
     self.responseData = nil;
+    
+    _tinderToken = self.api_token;
+    
+    NSLog(@"TinderToken: %@", _tinderToken);
 }
 
 
