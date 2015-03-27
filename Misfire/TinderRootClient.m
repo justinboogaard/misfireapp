@@ -129,6 +129,10 @@
     return true;
 }
 
+- (id) sendCuteMessage {
+    return self;
+}
+
 
 #pragma mark - NSURLConnection Delegate Methods
 
