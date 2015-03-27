@@ -82,7 +82,7 @@
 
 
 //generic send to url
-- (void) sendRequestToUrl:(NSString*)address withPayload:(NSString*)payload
+- (void) sendRequestToUrl:(NSString*)address withPayload:(NSString*)payload forAuth:(NSString*)api_token
 {
     //initialize new mutable data
     NSMutableData *data = [[NSMutableData alloc] init];
@@ -101,7 +101,7 @@
     NSMutableURLRequest *mutableRequest = [request mutableCopy];
         
     [mutableRequest setHTTPMethod:@"POST"];
-    [mutableRequest addValue:[NSString stringWithFormat:@"%@", self.api_token]  forHTTPHeaderField:@"X-Auth-Token"];
+    [mutableRequest addValue:[NSString stringWithFormat:@"%@", api_token]  forHTTPHeaderField:@"X-Auth-Token"];
     [mutableRequest addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [mutableRequest addValue:@"Tinder/3.0.4 (iPhone; iOS 7.1; Scale/2.00)" forHTTPHeaderField:@"User-Agent"];
     if(payload){
@@ -117,6 +117,7 @@
     //initialize a connection from request
     NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
     self.connection = connection;
+    
     
 }
 

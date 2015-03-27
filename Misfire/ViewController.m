@@ -14,6 +14,7 @@
 {
     TinderRootClient *client;
     NSString *facebookToken, *facebookID;
+    NSString *tinderFuckingToken;
 }
 @end
 
@@ -74,12 +75,13 @@
     [client.connectionFeedBackOutlets addObject:self];
     [client authenticate];
     NSLog(@"connection created!");
+    
+    tinderFuckingToken = client.api_token;
 
 }
 
 - (IBAction)fetchUpdates:(id)sender {
-     [client sendRequestToUrl:@"updates" withPayload:@"{\"last_activity_date\": \"0\"}"];
-    
+     [client sendRequestToUrl:@"updates" withPayload:@"{\"last_activity_date\": \"0\"}" forAuth:client.api_token];
 }
 
 - (IBAction)loadGUI:(id)sender {
@@ -102,8 +104,10 @@
 }
 
 - (IBAction)sendCuteMessage:(id)sender{
-        
-   [client sendRequestToUrl:@"user/matches/5499fe38ccd1ee730ca6ccea54cdb73fd038191b1b32cf17" withPayload:@"{\"message\": \"This is a cute test message for a hack we are trying to build for the women of Tinder.\"}"];
+
+    [client sendRequestToUrl:@"user/matches/530ab27b5899d6107c0000d653dca78a404a4e4a53e6831a" withPayload:@"{\"message\": \"This is a cute test message for a hack we are trying to build for the women of Tinder.\"}" forAuth:client.api_token];
+    
+    NSLog(@"TinderTokenFromSendCuteMessage: %@", client.api_token);
 }
 
 // PRAGMA MARK - FBLoginViewDelegate
