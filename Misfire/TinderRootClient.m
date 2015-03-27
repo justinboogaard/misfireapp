@@ -85,8 +85,8 @@
 - (void) sendRequestToUrl:(NSString*)address withPayload:(NSString*)payload forAuth:(NSString*)api_token
 {
     //initialize new mutable data
-    NSMutableData *data = [[NSMutableData alloc] init];
-    self.responseData = data;
+    NSMutableData *responseData = [[NSMutableData alloc] init];
+    self.responseData = responseData;
     
     //initialize url that is going to be fetched.
     //JUSTIN: this url needs to be modified so that it can take parameters
@@ -126,11 +126,6 @@
    // sendRequestToUrl:[NSString stringWithFormat:@"user/matches/%@", matchID] withPayload:[NSString stringWithFormat:@"{\"messages\":\"%@\"}", message];
     
     return true;
-}
-
-- (id) sendCuteMessage {
-    
-    return self;
 }
 
 

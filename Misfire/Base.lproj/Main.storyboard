@@ -88,8 +88,8 @@
                                     <action selector="fetchUpdates:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="pCJ-BI-JY4"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ik7-J3-5Oe">
-                                <rect key="frame" x="123" y="185" width="139" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ik7-J3-5Oe">
+                                <rect key="frame" x="-23" y="-30" width="139" height="30"/>
                                 <state key="normal" title="Send Cute Message">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -108,6 +108,7 @@
                                 <exclude reference="xuY-Aa-dHm"/>
                                 <exclude reference="cYf-OG-6Yt"/>
                                 <exclude reference="Gar-ce-2QW"/>
+                                <exclude reference="Ik7-J3-5Oe"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -119,6 +120,7 @@
                                 <include reference="xuY-Aa-dHm"/>
                                 <include reference="cYf-OG-6Yt"/>
                                 <include reference="Gar-ce-2QW"/>
+                                <include reference="Ik7-J3-5Oe"/>
                             </mask>
                         </variation>
                     </view>
