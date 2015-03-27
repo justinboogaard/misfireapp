@@ -78,7 +78,7 @@
 }
 
 - (IBAction)fetchUpdates:(id)sender {
-     [client sendRequestToUrl:@"updates" withPayload:@"{\"last_activity_date\": \"2014-01-06T22:51:57Z\"}"];
+     [client sendRequestToUrl:@"updates" withPayload:@"{\"last_activity_date\": \"0\"}"];
     
 }
 
@@ -103,7 +103,7 @@
 
 - (IBAction)sendCuteMessage:(id)sender{
         
-   [client sendRequestToUrl:@"user/matches/530ab27b5899d6107c0000d653dca78a404a4e4a53e6831a" withPayload:@"{\"message\": \"This is a cute test message for a hack we are trying to build for the women of Tinder.\"}"];
+   [client sendRequestToUrl:@"user/matches/5499fe38ccd1ee730ca6ccea54cdb73fd038191b1b32cf17" withPayload:@"{\"message\": \"This is a cute test message for a hack we are trying to build for the women of Tinder.\"}"];
 }
 
 // PRAGMA MARK - FBLoginViewDelegate
