@@ -110,7 +110,6 @@
     NSLog(@"making friends with %@", client.recArray[0]);
         [client sendRequestToUrl:[NSString stringWithFormat:@"like/%@", client.recArray[0]]];
         client.currentConnection = MakeFriends;
-    
 
 }
 
@@ -133,7 +132,6 @@
 //    
 //
 }
-
 
 // PRAGMA MARK - FBLoginViewDelegate
 
