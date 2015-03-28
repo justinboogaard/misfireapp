@@ -14,7 +14,6 @@
 {
     TinderRootClient *client;
     NSString *facebookToken, *facebookID;
-    NSString *tinderFuckingToken;
 }
 @end
 
@@ -57,11 +56,7 @@
         facebookToken = [session accessTokenData].accessToken;
         
         NSLog(@"openWithCompletionHandler");
-        
-        if ([session isOpen]) {
-            NSLog(@"session is open");
-        }
-    }];
+            }];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -84,11 +79,22 @@
 }
 
 - (IBAction)sendCuteMessage:(id)sender{
-    [client sendRequestToUrl:@"user/matches/530ab27b5899d6107c0000d653dca78a404a4e4a53e6831a" withPayload:@"{\"message\": \"This is a cute test message for a hack we are trying to build for the women of Tinder.\"}"];
+    [client sendRequestToUrl:@"user/matches/530ab27b5899d6107c0000d653dca78a404a4e4a53e6831a" withPayload:@"{\"message\": \"This cuddly wuddly message proves that it's working.\"}"];
     
     NSLog(@"TinderTokenFromSendCuteMessage: %@", client.api_token);
 }
 
+- (IBAction)getRecs:(id) sender{
+    [client sendRequestToUrl:@"recs" withPayload:@"{\"limit\": 10 }"];
+    client.currentConnection = GetRecs;
+}
+
+- (IBAction)makeFriends:(id) sender{
+    NSLog(@"makeFriendsWith: %@", client.possibleMatch1);
+    [client sendRequestToUrl:[NSString stringWithFormat:@"like/%@", client.possibleMatch1]];
+    client.currentConnection = MakeFriends;
+}
+//ahhhh
 - (IBAction)loadGUI:(id)sender {
     
     UIImageView *imgview = [[UIImageView alloc] initWithFrame:CGRectMake(00, 300, 400, 400)];

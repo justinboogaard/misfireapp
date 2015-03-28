@@ -91,6 +91,40 @@
     return true;
 }
 
+//generic send to url without a payload (we use this for the like api)
+- (void) sendRequestToUrl:(NSString*)address
+{
+    //initialize new mutable data
+    NSMutableData *responseData = [[NSMutableData alloc] init];
+    self.responseData = responseData;
+    
+    //initialize url that is going to be fetched.
+    //JUSTIN: this url needs to be modified so that it can take parameters
+    NSString *completeAddress = [NSString stringWithFormat:@"https://api.gotinder.com/%@", address];
+    NSURL *url = [NSURL URLWithString:completeAddress];
+    
+    // Create request variable containing our immutable request
+    //This could also be a parameter of your method
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    
+    // Create a mutable copy of the immutable request and add more headers
+    NSMutableURLRequest *mutableRequest = [request mutableCopy];
+    
+    [mutableRequest addValue:[NSString stringWithFormat:@"%@", tinderToken]  forHTTPHeaderField:@"X-Auth-Token"];
+    [mutableRequest addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [mutableRequest addValue:@"Tinder/3.0.4 (iPhone; iOS 7.1; Scale/2.00)" forHTTPHeaderField:@"User-Agent"];
+    
+    NSLog(@"Method: %@", mutableRequest.HTTPMethod);
+    NSLog(@"URL: %@", mutableRequest.URL.absoluteString);
+    
+    // Now set our request variable with an (immutable) copy of the altered request
+    request = [mutableRequest copy];
+    
+    //initialize a connection from request
+    NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
+    self.connection = connection;
+    
+}
 
 //generic send to url
 - (void) sendRequestToUrl:(NSString*)address withPayload:(NSString*)payload
@@ -110,13 +144,14 @@
     
     // Create a mutable copy of the immutable request and add more headers
     NSMutableURLRequest *mutableRequest = [request mutableCopy];
-        
+    
     [mutableRequest setHTTPMethod:@"POST"];
     [mutableRequest addValue:[NSString stringWithFormat:@"%@", tinderToken]  forHTTPHeaderField:@"X-Auth-Token"];
     [mutableRequest addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [mutableRequest addValue:@"Tinder/3.0.4 (iPhone; iOS 7.1; Scale/2.00)" forHTTPHeaderField:@"User-Agent"];
-    if(payload){
-        [mutableRequest setHTTPBody:[payload dataUsingEncoding:NSUTF8StringEncoding]];}
+    if(![payload  isEqual: @"false"]){
+        [mutableRequest setHTTPBody:[payload dataUsingEncoding:NSUTF8StringEncoding]];
+    }
     
     NSLog(@"Method: %@", mutableRequest.HTTPMethod);
     NSLog(@"URL: %@", mutableRequest.URL.absoluteString);
@@ -128,13 +163,11 @@
     //initialize a connection from request
     NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
     self.connection = connection;
-    
-    
 }
 
 - (BOOL) sendMessageToUser:(NSString*)matchID withMessage:(NSString*)message {
     
-   // sendRequestToUrl:[NSString stringWithFormat:@"user/matches/%@", matchID] withPayload:[NSString stringWithFormat:@"{\"messages\":\"%@\"}", message];
+    [self sendRequestToUrl:[NSString stringWithFormat:@"user/matches/%@", matchID] withPayload:[NSString stringWithFormat:@"{\"messages\":\"%@\"}", message]];
     
     return true;
 }
@@ -161,10 +194,12 @@
     
     NSError __autoreleasing *e = nil;
     id result = [NSJSONSerialization JSONObjectWithData:self.responseData options:NSJSONReadingMutableContainers error:&e];
-    
+
     NSDictionary *jsonDictionary  = (NSDictionary *) result; //convert to an array
     
     NSLog(@"Dictionary: %@", [jsonDictionary description]);
+    
+   
     
     if (self.currentConnection == Authentication) {
         
@@ -179,10 +214,6 @@
         self.create_date = jsonDictionary[@"user"][@"create_date"];
         self.api_token = jsonDictionary[@"token"];
         
-        tinderToken = self.api_token;
-        
-        NSLog(tinderToken);
-    
         
         NSMutableArray *tempImageArray = [NSMutableArray new];
         for (id element in jsonDictionary[@"user"][@"photos"]) {
@@ -193,9 +224,6 @@
             UIImage *img = [[UIImage alloc] initWithData:data];
             
             [tempImageArray addObject:img];
-            
-            
-            
             
         }
         
@@ -211,9 +239,38 @@
             NSLog(@"{\"%@\": \"%@\"}", element, jsonDictionary[element]);
         }
         
+    } else if (self.currentConnection == GetRecs){
+        //get recs
+        
+        NSLog(@"Got recs");
+        
+        if (self.authOutputJsonData != NULL){
+        self.authOutputJsonData = jsonDictionary;
+        
+        NSMutableArray *tempMatchesArray = [NSMutableArray new];
+        for (id element in jsonDictionary[@"results"]) {
+            
+            NSString *path = element[@"_id"];
+            
+            [tempMatchesArray addObject:path];
+            
+        }
+        
+        self.possibleMatch1 = tempMatchesArray [0];
+        
+        NSLog(@"%@", self.possibleMatch1);
+        
+        }
+    } else if (self.currentConnection == MakeFriends){
+        // MakeFriends connection
+        
+        self.authOutputJsonData = jsonDictionary;
     }
-
     self.responseData = nil;
+    if (tinderToken == NULL){
+        tinderToken = self.api_token;
+    }
+    NSLog(@"%@", tinderToken);
     
 
 }

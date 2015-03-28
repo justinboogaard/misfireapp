@@ -97,6 +97,24 @@
                                     <action selector="sendCuteMessage:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="sP2-UV-EqC"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7t9-ZJ-kAn">
+                                <rect key="frame" x="93" y="209" width="57" height="30"/>
+                                <state key="normal" title="getRecs">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="getRecs:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="SMg-k1-SWn"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6ze-7X-iEh">
+                                <rect key="frame" x="93" y="159" width="89" height="30"/>
+                                <state key="normal" title="makeFriends">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="makeFriends:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="HVp-ue-HAJ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <variation key="default">
@@ -121,6 +139,7 @@
                                 <include reference="cYf-OG-6Yt"/>
                                 <include reference="Gar-ce-2QW"/>
                                 <include reference="Ik7-J3-5Oe"/>
+                                <include reference="7t9-ZJ-kAn"/>
                             </mask>
                         </variation>
                     </view>
@@ -130,7 +149,9 @@
                         <outlet property="connectionButton" destination="ZhW-75-7Me" id="1FB-Oz-3hc"/>
                         <outlet property="connectionNameLabel" destination="Rd3-rm-Oyk" id="Cck-RV-8ds"/>
                         <outlet property="connectionSuccessLabel" destination="jHh-NO-dag" id="2z1-Mf-UbK"/>
+                        <outlet property="getRecsButton" destination="7t9-ZJ-kAn" id="8ON-8h-cxH"/>
                         <outlet property="loadDataButton" destination="cYf-OG-6Yt" id="uth-HS-2gJ"/>
+                        <outlet property="makeFriendsButton" destination="6ze-7X-iEh" id="z3A-AM-cjQ"/>
                         <outlet property="sendCuteMessageButton" destination="Ik7-J3-5Oe" id="m9v-hS-BN4"/>
                         <outlet property="updatesButton" destination="Gar-ce-2QW" id="sUw-4K-wfi"/>
                     </connections>

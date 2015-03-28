@@ -15,7 +15,7 @@
 typedef enum
 {
     Authentication = 1,
-    UpdateFetch
+    UpdateFetch, GetRecs, MakeFriends
 } Connections;
 
 #pragma mark Basic MetaData
@@ -49,15 +49,21 @@ typedef enum
 
 @property (strong, nonatomic) NSArray *images;
 
+
+@property (strong, nonatomic) NSString *possibleMatch1;
+
+
 #pragma mark Constructors
 
 - (id) initWithAuthToken: (NSString *) authToken;
 - (id) initWithFacebookData: (NSString *) facebookToken facebookID:(NSString *) facebookID;
+- (void) sendRequestToUrl:(NSString *)address;
 - (void) sendRequestToUrl:(NSString *)address withPayload:(NSString *)payload;
 
 #pragma mark Additional Methods
 
 - (bool) authenticate;
+-(bool) getRecs;
 
 
 @end
