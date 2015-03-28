@@ -14,6 +14,7 @@
 {
     TinderRootClient *client;
     NSString *facebookToken, *facebookID;
+    NSString *last_fetch;
 }
 @end
 
@@ -64,17 +65,32 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)createConnection:(id)sender {
-    facebookToken = [[FBSession activeSession] accessTokenData].accessToken;
-    client = [[TinderRootClient alloc] initWithFacebookData:facebookToken facebookID:facebookID];
-    [client.connectionFeedBackOutlets addObject:self];
-    [client authenticate];
-    NSLog(@"connection created!");
-
-}
+//- (IBAction)createConnection:(id)sender {
+//    facebookToken = [[FBSession activeSession] accessTokenData].accessToken;
+//    client = [[TinderRootClient alloc] initWithFacebookData:facebookToken facebookID:facebookID];
+//    [client.connectionFeedBackOutlets addObject:self];
+//    [client authenticate];
+//    NSLog(@"connection created!");
+//
+//}
 
 - (IBAction)fetchUpdates:(id)sender {
-     [client sendRequestToUrl:@"updates" withPayload:@"{\"last_activity_date\": \"0\"}"];
+    
+    if (last_fetch == NULL){
+        NSLog(@"Last ping time: %@", client.ping_time);
+        last_fetch = client.ping_time;
+    } else {
+        NSLog(@"Last ping time: %@", last_fetch);
+    }
+
+     [client sendRequestToUrl:@"updates" withPayload:[NSString stringWithFormat:@"{\"last_activity_date\": \"%@\"}", last_fetch]];
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"];
+    
+    NSString *formattedDateString = [dateFormatter stringFromDate:[NSDate date]];
+    last_fetch = formattedDateString;
+    NSLog(@"New ping time: %@", last_fetch);
     
 }
 
@@ -85,16 +101,19 @@
 }
 
 - (IBAction)getRecs:(id) sender{
-    [client sendRequestToUrl:@"recs" withPayload:@"{\"limit\": 10 }"];
+    [client sendRequestToUrl:@"recs" withPayload:@"{\"limit\": 1 }"];
     client.currentConnection = GetRecs;
 }
 
 - (IBAction)makeFriends:(id) sender{
-    NSLog(@"makeFriendsWith: %@", client.possibleMatch1);
-    [client sendRequestToUrl:[NSString stringWithFormat:@"like/%@", client.possibleMatch1]];
-    client.currentConnection = MakeFriends;
+    
+    NSLog(@"making friends with %@", client.recArray[0]);
+        [client sendRequestToUrl:[NSString stringWithFormat:@"like/%@", client.recArray[0]]];
+        client.currentConnection = MakeFriends;
+    
+
 }
-//ahhhh
+
 - (IBAction)loadGUI:(id)sender {
     
     UIImageView *imgview = [[UIImageView alloc] initWithFrame:CGRectMake(00, 300, 400, 400)];
@@ -106,12 +125,13 @@
     [imgview setContentMode:UIViewContentModeScaleAspectFit];
     [self.view addSubview:imgview];
     
-    if (client.fullName) {
-        self.connectionSuccessLabel.text = @"Success!";
-        self.accountNameLabel.text = client.fullName;
-    }
-    
-    
+//    if (client.fullName) {
+//        self.connectionSuccessLabel.text = @"Success!";
+//        self.accountNameLabel.text = client.fullName;
+//    }
+//    
+//    
+//
 }
 
 
@@ -122,6 +142,13 @@
 
 - (void) loginViewShowingLoggedInUser:(FBLoginView *)loginView {
     NSLog(@"Logged In");
+    
+    facebookToken = [[FBSession activeSession] accessTokenData].accessToken;
+    client = [[TinderRootClient alloc] initWithFacebookData:facebookToken facebookID:facebookID];
+    [client.connectionFeedBackOutlets addObject:self];
+    [client authenticate];
+    NSLog(@"connection created!");
+    
 }
 
 - (void) loginViewShowingLoggedOutUser:(FBLoginView *)loginView {

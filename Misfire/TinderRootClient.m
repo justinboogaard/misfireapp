@@ -123,6 +123,7 @@
     //initialize a connection from request
     NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
     self.connection = connection;
+
     
 }
 
@@ -165,12 +166,12 @@
     self.connection = connection;
 }
 
-- (BOOL) sendMessageToUser:(NSString*)matchID withMessage:(NSString*)message {
-    
-    [self sendRequestToUrl:[NSString stringWithFormat:@"user/matches/%@", matchID] withPayload:[NSString stringWithFormat:@"{\"messages\":\"%@\"}", message]];
-    
-    return true;
-}
+//- (BOOL) sendMessageToUser:(NSString*)matchID withMessage:(NSString*)message {
+//    
+//    [self sendRequestToUrl:[NSString stringWithFormat:@"user/matches/%@", matchID] withPayload:[NSString stringWithFormat:@"{\"messages\":\"%@\"}", message]];
+//    
+//    return true;
+//}
 
 
 #pragma mark - NSURLConnection Delegate Methods
@@ -181,6 +182,7 @@
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
+    NSLog(@"Connection received data");
     [self.responseData appendData:data];
 }
 
@@ -213,6 +215,7 @@
         self.gender = jsonDictionary[@"user"][@"gender"];
         self.create_date = jsonDictionary[@"user"][@"create_date"];
         self.api_token = jsonDictionary[@"token"];
+        self.ping_time=jsonDictionary[@"user"][@"ping_time"];
         
         
         NSMutableArray *tempImageArray = [NSMutableArray new];
@@ -239,6 +242,8 @@
             NSLog(@"{\"%@\": \"%@\"}", element, jsonDictionary[element]);
         }
         
+        //self.ping_time =
+        
     } else if (self.currentConnection == GetRecs){
         //get recs
         
@@ -246,31 +251,43 @@
         
         if (self.authOutputJsonData != NULL){
         self.authOutputJsonData = jsonDictionary;
+            self.recArray = [[NSMutableArray alloc] init];
         
-        NSMutableArray *tempMatchesArray = [NSMutableArray new];
         for (id element in jsonDictionary[@"results"]) {
             
             NSString *path = element[@"_id"];
+            NSLog(@"%@", path);
+            [self.recArray addObject:path];
             
-            [tempMatchesArray addObject:path];
-            
+//            [self sendRequestToUrl:[NSString stringWithFormat:@"like/%@", path]];
+//            self.currentConnection = MakeFriends;
         }
+            
         
-        self.possibleMatch1 = tempMatchesArray [0];
-        
-        NSLog(@"%@", self.possibleMatch1);
         
         }
     } else if (self.currentConnection == MakeFriends){
         // MakeFriends connection
         
         self.authOutputJsonData = jsonDictionary;
+        if (jsonDictionary[@"match"] == 1){
+            NSLog(@"match!");
+        } else {
+            NSLog(@"no match :(");
+        }
+        
+        if (self.authOutputJsonData == NULL){
+            NSLog(@"Output is NULL");
+        }
+        
+        
+        
     }
     self.responseData = nil;
     if (tinderToken == NULL){
         tinderToken = self.api_token;
     }
-    NSLog(@"%@", tinderToken);
+    NSLog(@"done loading");
     
 
 }

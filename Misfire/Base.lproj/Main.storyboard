@@ -16,54 +16,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZhW-75-7Me">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <state key="normal" title="Connect to Account">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="16" y="28" width="138" height="30"/>
-                                </variation>
-                                <connections>
-                                    <action selector="createConnection:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="cSK-0y-uGg"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Connection:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S41-dc-o54">
-                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="16" y="66" width="94" height="21"/>
-                                </variation>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Connected to Account of: " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rd3-rm-Oyk">
-                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="16" y="95" width="203" height="21"/>
-                                </variation>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Waiting..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jHh-NO-dag">
-                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="232" y="65" width="72" height="21"/>
-                                </variation>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Waiting" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xuY-Aa-dHm">
-                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="232" y="95" width="152" height="21"/>
-                                </variation>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cYf-OG-6Yt">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <state key="normal" title="Load Data into Gui">
@@ -89,7 +41,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ik7-J3-5Oe">
-                                <rect key="frame" x="-23" y="-30" width="139" height="30"/>
+                                <rect key="frame" x="-30" y="-20" width="139" height="30"/>
                                 <state key="normal" title="Send Cute Message">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -119,11 +71,6 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <variation key="default">
                             <mask key="subviews">
-                                <exclude reference="ZhW-75-7Me"/>
-                                <exclude reference="S41-dc-o54"/>
-                                <exclude reference="Rd3-rm-Oyk"/>
-                                <exclude reference="jHh-NO-dag"/>
-                                <exclude reference="xuY-Aa-dHm"/>
                                 <exclude reference="cYf-OG-6Yt"/>
                                 <exclude reference="Gar-ce-2QW"/>
                                 <exclude reference="Ik7-J3-5Oe"/>
@@ -131,11 +78,6 @@
                         </variation>
                         <variation key="widthClass=compact">
                             <mask key="subviews">
-                                <include reference="ZhW-75-7Me"/>
-                                <include reference="S41-dc-o54"/>
-                                <include reference="Rd3-rm-Oyk"/>
-                                <include reference="jHh-NO-dag"/>
-                                <include reference="xuY-Aa-dHm"/>
                                 <include reference="cYf-OG-6Yt"/>
                                 <include reference="Gar-ce-2QW"/>
                                 <include reference="Ik7-J3-5Oe"/>
@@ -144,11 +86,6 @@
                         </variation>
                     </view>
                     <connections>
-                        <outlet property="accountNameLabel" destination="xuY-Aa-dHm" id="SRZ-ky-GGa"/>
-                        <outlet property="connectedLabel" destination="S41-dc-o54" id="dAW-gy-zm2"/>
-                        <outlet property="connectionButton" destination="ZhW-75-7Me" id="1FB-Oz-3hc"/>
-                        <outlet property="connectionNameLabel" destination="Rd3-rm-Oyk" id="Cck-RV-8ds"/>
-                        <outlet property="connectionSuccessLabel" destination="jHh-NO-dag" id="2z1-Mf-UbK"/>
                         <outlet property="getRecsButton" destination="7t9-ZJ-kAn" id="8ON-8h-cxH"/>
                         <outlet property="loadDataButton" destination="cYf-OG-6Yt" id="uth-HS-2gJ"/>
                         <outlet property="makeFriendsButton" destination="6ze-7X-iEh" id="z3A-AM-cjQ"/>
