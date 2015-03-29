@@ -57,7 +57,7 @@
         facebookToken = [session accessTokenData].accessToken;
         
         NSLog(@"openWithCompletionHandler");
-            }];
+    }];
 }
 
 - (void)didReceiveMemoryWarning {

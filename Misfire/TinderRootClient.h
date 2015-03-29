@@ -76,7 +76,7 @@ typedef enum
 #pragma mark Additional Methods
 
 - (bool) authenticate;
--(bool) getRecs;
+// - (bool) getRecs;
 
 
 @end
