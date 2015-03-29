@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		396ECD8C1AC7880B00B08697 /* MisfireConvo.m in Sources */ = {isa = PBXBuildFile; fileRef = 396ECD8B1AC7880B00B08697 /* MisfireConvo.m */; };
+		396ECD951AC7CF3400B08697 /* Message.m in Sources */ = {isa = PBXBuildFile; fileRef = 396ECD941AC7CF3400B08697 /* Message.m */; };
 		9ECB3B481ABE3F5000DAA0AC /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9ECB3B471ABE3F5000DAA0AC /* FacebookSDK.framework */; };
 		D951678F1A92F03700C3754D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D951678E1A92F03700C3754D /* main.m */; };
 		D95167921A92F03700C3754D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D95167911A92F03700C3754D /* AppDelegate.m */; };
@@ -34,6 +35,8 @@
 /* Begin PBXFileReference section */
 		396ECD8A1AC7880B00B08697 /* MisfireConvo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MisfireConvo.h; sourceTree = "<group>"; };
 		396ECD8B1AC7880B00B08697 /* MisfireConvo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MisfireConvo.m; sourceTree = "<group>"; };
+		396ECD931AC7CF3400B08697 /* Message.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Message.h; sourceTree = "<group>"; };
+		396ECD941AC7CF3400B08697 /* Message.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Message.m; sourceTree = "<group>"; };
 		9ECB3B471ABE3F5000DAA0AC /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 		D95167891A92F03700C3754D /* Misfire.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Misfire.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D951678D1A92F03700C3754D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -111,6 +114,8 @@
 				D9B4A5A81A92F10F00751F76 /* TinderRootClient.m */,
 				396ECD8A1AC7880B00B08697 /* MisfireConvo.h */,
 				396ECD8B1AC7880B00B08697 /* MisfireConvo.m */,
+				396ECD931AC7CF3400B08697 /* Message.h */,
+				396ECD941AC7CF3400B08697 /* Message.m */,
 				D9B4A5AA1A92F12D00751F76 /* TinderGuestClient.h */,
 				D9B4A5AB1A92F12D00751F76 /* TinderGuestClient.m */,
 				D9B4A5AD1A92F19400751F76 /* SharedManager.h */,
@@ -257,6 +262,7 @@
 				D95167921A92F03700C3754D /* AppDelegate.m in Sources */,
 				D9B4A5AF1A92F19400751F76 /* SharedManager.m in Sources */,
 				D9B4A5A91A92F10F00751F76 /* TinderRootClient.m in Sources */,
+				396ECD951AC7CF3400B08697 /* Message.m in Sources */,
 				D951678F1A92F03700C3754D /* main.m in Sources */,
 				D9B4A5AC1A92F12D00751F76 /* TinderGuestClient.m in Sources */,
 			);

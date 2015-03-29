@@ -7,6 +7,15 @@
 //
 
 #import "MisfireConvo.h"
+#import "TinderRootClient.h"
+
+
+@interface MisfireConvo ()
+{
+    TinderRootClient *client;
+}
+
+@end
 
 @implementation MisfireConvo
 
@@ -20,13 +29,39 @@
     return self;
 }
 
-- (NSString*) receiverOfMessageFrom: (NSString *)sender{
-    if (sender == self.person1){
-        return self.person2;
+
+//RelayMessageToOther
+- (void) relayMessage: (Message *)message {
+    if (message.personFrom == self.person1){
+        [client sendRequestToUrl:[NSString stringWithFormat:@"user/matches/%@", self.person2] withPayload:[NSString stringWithFormat:@"{\"message\": \"%@\"}",message.messageText]];
     } else {
-        return self.person1;
-    };
+        [client sendRequestToUrl:[NSString stringWithFormat:@"user/matches/%@", self.person1] withPayload:[NSString stringWithFormat:@"{\"message\": \"%@\"}",message.messageText]];
+    }
 }
 
+//AddMessageToConvoArray
+- (void) addMessage:(Message *)message {
+    [self.convoLog addObject:message];
+}
 
+//something that tells the convo to update itself
+- (void) parseDict:(NSDictionary *)updatedDict{
+    //for loop
+    for (id element in updatedDict[@"messages"][@"from"]) {
+        NSString *from = element[@"from"];
+        NSString *timestamp = element[@"timestamp"];
+        NSString *messageText = element[@"message"];
+                                                
+        if (from == self.person1) {
+            Message *newMessage = [[Message alloc] initWithMessage:messageText from:from atTime:timestamp];
+            [self addMessage:newMessage];
+            [self relayMessage:newMessage];
+        } else if (from == self.person2) {
+            Message *newMessage = [[Message alloc] initWithMessage:messageText from:from atTime:timestamp];
+            [self addMessage:newMessage];
+            [self relayMessage:newMessage];
+        }
+
+    }
+}
 @end
