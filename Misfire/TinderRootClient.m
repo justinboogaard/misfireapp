@@ -207,6 +207,8 @@
         
         self.authOutputJsonData = jsonDictionary;
         
+        NSLog(@"Thiiiiissss iiissssss thhhhhheeeeeee authOutputJsonData %@", jsonDictionary);
+        
         self.fullName = jsonDictionary[@"user"][@"full_name"];
         self._id = jsonDictionary[@"user"][@"_id"];
         self.bio = jsonDictionary[@"user"][@"bio"];
@@ -242,6 +244,7 @@
             NSLog(@"{\"%@\": \"%@\"}", element, jsonDictionary[element]);
         }
         
+        
         //self.ping_time =
         
     } else if (self.currentConnection == GetRecs){
@@ -249,8 +252,8 @@
         
         NSLog(@"Got recs");
         
-        if (self.authOutputJsonData != NULL){
-        self.authOutputJsonData = jsonDictionary;
+
+      
             self.recArray = [[NSMutableArray alloc] init];
         
         for (id element in jsonDictionary[@"results"]) {
@@ -264,20 +267,13 @@
         }
             
         
-        
-        }
-    } else if (self.currentConnection == MakeFriends){
+        } if (self.currentConnection == MakeFriends){
         // MakeFriends connection
         
-        self.authOutputJsonData = jsonDictionary;
         if (jsonDictionary[@"match"] == 1){
             NSLog(@"match!");
         } else {
             NSLog(@"no match :(");
-        }
-        
-        if (self.authOutputJsonData == NULL){
-            NSLog(@"Output is NULL");
         }
         
         
@@ -289,8 +285,6 @@
     }
     NSLog(@"done loading");
     
-    NSLog(@"-----------------------------------------------------------------------------------------------------------");
-
 }
 
 
