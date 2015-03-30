@@ -30,7 +30,8 @@
 }
 
 
-//RelayMessageToOther
+//RelayMessage is called by the if statements of parseDict, parseDict will process the JSonDictionary that is handed to it, then depending on the id of who sent it, relay that message to the other person and save it in our conversation array
+//TODO i may need to add a check in the current conversation, because the JSONDict that fetchUpdates calls might not always be up to date
 - (void) relayMessage: (Message *)message {
     if (message.personFrom == self.person1){
         [client sendRequestToUrl:[NSString stringWithFormat:@"user/matches/%@", self.person2] withPayload:[NSString stringWithFormat:@"{\"message\": \"%@\"}",message.messageText]];
@@ -39,7 +40,7 @@
     }
 }
 
-//AddMessageToConvoArray
+//This adds new messages to the conversation array, which will be called by the UI to auto populate the converastion
 - (void) addMessage:(Message *)message {
     [self.convoLog addObject:message];
 }
@@ -47,7 +48,7 @@
 //something that tells the convo to update itself
 - (void) parseDict:(NSDictionary *)updatedDict{
     //for loop
-    for (id element in updatedDict[@"messages"][@"from"]) {
+    for (id element in updatedDict[@"messages"]) {
         NSString *from = element[@"from"];
         NSString *timestamp = element[@"timestamp"];
         NSString *messageText = element[@"message"];

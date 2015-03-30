@@ -84,6 +84,7 @@
     }
 
      [client sendRequestToUrl:@"updates" withPayload:[NSString stringWithFormat:@"{\"last_activity_date\": \"%@\"}", last_fetch]];
+     client.currentConnection = UpdateFetch;
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"];

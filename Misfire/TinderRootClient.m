@@ -207,8 +207,6 @@
         
         self.authOutputJsonData = jsonDictionary;
         
-        NSLog(@"Thiiiiissss iiissssss thhhhhheeeeeee authOutputJsonData %@", jsonDictionary);
-        
         self.fullName = jsonDictionary[@"user"][@"full_name"];
         self._id = jsonDictionary[@"user"][@"_id"];
         self.bio = jsonDictionary[@"user"][@"bio"];
@@ -240,10 +238,15 @@
         
         NSLog(@"Connection succeeded.");
         
-        for (id element in jsonDictionary) {
-            NSLog(@"{\"%@\": \"%@\"}", element, jsonDictionary[element]);
+        for (id conversationDictionary in jsonDictionary[@"matches"]){
+            NSDictionary *messageDict = conversationDictionary[@"messages"];
+
+            for (int x; x <= self.misfireConvoArray.count; x++) {
+                //how do you tell ios that this misfireConvoArray is a MisfireConvo
+                MisfireConvo *convo = self.misfireConvoArray[x];
+                [convo parseDict:messageDict];
+            }
         }
-        
         
         //self.ping_time =
         

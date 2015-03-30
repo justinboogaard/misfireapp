@@ -20,7 +20,7 @@
     if (self = [super init]) {
         
         self.messageText = messageText;
-        self.personTo = personFrom;
+        self.personFrom = personFrom;
         self.timestamp = timestamp;
     }
     return self;

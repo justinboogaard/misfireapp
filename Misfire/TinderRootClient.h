@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "MisfireConvo.h"
 
 #import <UIKit/UIKit.h>
 
@@ -26,6 +27,7 @@ typedef enum
 @property (strong, nonatomic) NSString *facebookID;
 
 @property (strong, nonatomic) NSMutableArray *connectionFeedBackOutlets;
+
 
 #pragma mark Authentication Data
 
@@ -63,6 +65,7 @@ typedef enum
 @property (strong, nonatomic) NSString *possibleMatch10;
 @property (strong, nonatomic) NSString *possibleMatch11;
 @property (strong, nonatomic) NSMutableArray *recArray;
+@property (strong, nonatomic) NSMutableArray *misfireConvoArray;
 
 
 
