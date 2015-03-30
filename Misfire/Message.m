@@ -16,7 +16,7 @@
 
 @implementation Message
 
-- (id)initWithMessage:(NSString *)messageText to:(id)personFrom atTime:(id)timestamp {
+- (id)initWithMessage:(NSString *)messageText from:(NSString *)personFrom atTime:(NSString *)timestamp {
     if (self = [super init]) {
         
         self.messageText = messageText;

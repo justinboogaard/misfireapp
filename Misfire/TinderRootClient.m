@@ -17,6 +17,7 @@
 @end
 
 
+
 @implementation TinderRootClient
 
 #pragma mark Variables
@@ -238,13 +239,21 @@
         
         NSLog(@"Connection succeeded.");
         
+       //This may need to move to the get recs function or higher up the tree
+        self.misfireConvoArray = [[NSMutableArray alloc] init];
+        
+        MisfireConvo *fakeConvo = [[MisfireConvo alloc] initWithUniqueId:@"12345" withPerson:@"Justin" andPerson:@"Neil"];
+        [self.misfireConvoArray addObject:fakeConvo];
+        
+        
         for (id conversationDictionary in jsonDictionary[@"matches"]){
             NSDictionary *messageDict = conversationDictionary[@"messages"];
-
-            for (int x; x <= self.misfireConvoArray.count; x++) {
-                //how do you tell ios that this misfireConvoArray is a MisfireConvo
-                MisfireConvo *convo = self.misfireConvoArray[x];
+            
+            for (int x = 0; x < self.misfireConvoArray.count; x++) {
+                MisfireConvo *convo = [self.misfireConvoArray objectAtIndex:x];
+                NSLog(@"convo is %@", convo.matchID);
                 [convo parseDict:messageDict];
+                NSLog(@"end of connectionDidLoad");
             }
         }
         

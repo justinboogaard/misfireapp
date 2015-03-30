@@ -17,7 +17,7 @@
 @property (nonatomic, strong) NSArray *messageString;
 @property (nonatomic, strong) NSMutableArray *convoLog;
 
-- (id) initWithUniqueId:(NSString *)matchID withPerson: (NSString *)person1 andPerson: (NSString *)person2;
+- (id) initWithUniqueId:(NSString *)matchID withPerson:(NSString *)person1 andPerson:(NSString *)person2;
 - (void) relayMessage: (Message *)newMessage;
 - (void) addMessage: (Message *)message;
 - (void) parseDict:(NSDictionary *)updatedSDict;
