@@ -7,15 +7,8 @@
 //
 
 #import "MisfireConvo.h"
-#import "TinderRootClient.h"
 
 
-@interface MisfireConvo ()
-{
-    TinderRootClient *client;
-}
-
-@end
 
 @implementation MisfireConvo
 
@@ -30,16 +23,18 @@
 }
 
 
-
-
 //RelayMessage is called by the if statements of parseDict, parseDict will process the JSonDictionary that is handed to it, then depending on the id of who sent it, relay that message to the other person and save it in our conversation array
 //TODO i may need to add a check in the current conversation, because the JSONDict that fetchUpdates calls might not always be up to date
 - (void) relayMessage: (Message *)message {
     NSLog(@"We got to relay!");
-    if (message.personFrom == self.person1){
-        [client sendRequestToUrl:[NSString stringWithFormat:@"user/matches/%@", self.person2] withPayload:[NSString stringWithFormat:@"{\"message\": \"%@\"}",message.messageText]];
+    NSLog(@"Person From is %@. Person1 is %@", message.personFrom, self.person1);
+    if ([message.personFrom isEqualToString: self.person1]){
+        NSLog(@"Sending self.person2(%@) message.messageText(%@)",self.person2, message.messageText);
+        NSLog(@"the client exists and a sample variable is %@", self.myClient.facebookID);
+        [self.myClient sendRequestToUrl:[NSString stringWithFormat:@"user/matches/%@", self.person2] withPayload:[NSString stringWithFormat:@"{\"message\": \"%@\"}",message.messageText]];
+        NSLog(@"message sent!");
     } else {
-        [client sendRequestToUrl:[NSString stringWithFormat:@"user/matches/%@", self.person1] withPayload:[NSString stringWithFormat:@"{\"message\": \"%@\"}",message.messageText]];
+        [self.myClient sendRequestToUrl:[NSString stringWithFormat:@"user/matches/%@", self.person1] withPayload:[NSString stringWithFormat:@"{\"message\": \"%@\"}",message.messageText]];
     }
 }
 
@@ -57,10 +52,13 @@
      NSLog(@"parseDict has been called!");
         NSLog(@"Dictionary being sent is %@", [updatedDict description]);
     //make sure to delete this inialization later
-    [self initWithUniqueId:@"12345678999" withPerson:@"53e2eaef56bc143f2230aee2" andPerson:@"Neil"];
+    [self initWithUniqueId:@"convo with May" withPerson:@"530ab27b5899d6107c0000d653e2eaef56bc143f2230aee2" andPerson:@"530ab27b5899d6107c0000d653e2eaef56bc143f2230aee2"];
   
+    
+    //THIS IS A BIG DEAL: I'm parsing the data to look for matchID NOT from because when i send the message later I'll be sending it to the MATCH ID. the MatchID IS the from.
+    
     for (id element in updatedDict) {
-        NSString *from = element[@"from"];
+        NSString *from = element[@"match_id"];
         NSString *timestamp = element[@"timestamp"];
         NSString *messageText = element[@"message"];
         

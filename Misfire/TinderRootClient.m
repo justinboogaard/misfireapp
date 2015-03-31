@@ -8,7 +8,6 @@
 
 #import "TinderRootClient.h"
 
-#import <UIKit/UIKit.h>
 
 @interface TinderRootClient ()
 {
@@ -21,8 +20,6 @@
 @implementation TinderRootClient
 
 #pragma mark Variables
-
-
 
 #pragma mark Constructors
 
@@ -131,6 +128,8 @@
 //generic send to url
 - (void) sendRequestToUrl:(NSString*)address withPayload:(NSString*)payload
 {
+    
+    NSLog(@"sending request to URL %@ with payload %@", address, payload);
     //initialize new mutable data
     NSMutableData *responseData = [[NSMutableData alloc] init];
     self.responseData = responseData;
@@ -242,7 +241,9 @@
        //This may need to move to the get recs function or higher up the tree
         self.misfireConvoArray = [[NSMutableArray alloc] init];
         
-        MisfireConvo *fakeConvo = [[MisfireConvo alloc] initWithUniqueId:@"12345" withPerson:@"Justin" andPerson:@"Neil"];
+        MisfireConvo *fakeConvo = [[MisfireConvo alloc] initWithUniqueId:@"12345" withPerson:@"530ab27b5899d6107c0000d653e2eaef56bc143f2230aee2" andPerson:@"Ne530ab27b5899d6107c0000d653e2eaef56bc143f2230aee2"];
+        fakeConvo.myClient = self;
+
         [self.misfireConvoArray addObject:fakeConvo];
         
         
