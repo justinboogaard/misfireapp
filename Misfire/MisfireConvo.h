@@ -12,15 +12,17 @@
 #import "TinderRootClient.h"
 
 @class TinderRootClient;
+@class Message;
 
 @interface MisfireConvo : NSObject
 
 @property (nonatomic, strong) NSString *matchID;
 @property (nonatomic, strong) NSString *person1;
 @property (nonatomic, strong) NSString *person2;
-@property (nonatomic, strong) NSArray *messageString;
 @property (nonatomic, strong) NSMutableArray *convoLog;
 @property (nonatomic, strong) TinderRootClient *myClient;
+@property (nonatomic, strong) Message *oldestMessage;
+@property (nonatomic, strong) NSString *oldestTimestamp;
 
 - (id) initWithUniqueId:(NSString *)matchID withPerson:(NSString *)person1 andPerson:(NSString *)person2;
 - (void) relayMessage: (Message *)newMessage;

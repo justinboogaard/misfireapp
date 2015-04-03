@@ -18,7 +18,6 @@
 
 - (id)initWithMessage:(NSString *)messageText from:(NSString *)personFrom atTime:(NSString *)timestamp {
     if (self = [super init]) {
-        
         self.messageText = messageText;
         self.personFrom = personFrom;
         self.timestamp = timestamp;

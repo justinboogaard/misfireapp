@@ -39,6 +39,8 @@
         
         self.facebookToken = facebookToken;
         self.facebookID = facebookID;
+        self.misfireConvoArray = [[NSMutableArray alloc] init];
+        self.recArray = [[NSMutableArray alloc] init];
     }
     
     return self;
@@ -128,8 +130,6 @@
 //generic send to url
 - (void) sendRequestToUrl:(NSString*)address withPayload:(NSString*)payload
 {
-    
-    NSLog(@"sending request to URL %@ with payload %@", address, payload);
     //initialize new mutable data
     NSMutableData *responseData = [[NSMutableData alloc] init];
     self.responseData = responseData;
@@ -191,113 +191,110 @@
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
-    
-    NSLog(@"connection did finish loading");
-    
-    NSError __autoreleasing *e = nil;
-    id result = [NSJSONSerialization JSONObjectWithData:self.responseData options:NSJSONReadingMutableContainers error:&e];
+    if (self.responseData) {
+        NSLog(@"connection did finish loading");
+        
+        NSError __autoreleasing *e = nil;
+        id result = [NSJSONSerialization JSONObjectWithData:self.responseData options:NSJSONReadingMutableContainers error:&e];
 
-    NSDictionary *jsonDictionary  = (NSDictionary *) result; //convert to an array
-    
-    NSLog(@"Dictionary: %@", [jsonDictionary description]);
-    
-   
-    
-    if (self.currentConnection == Authentication) {
+        NSDictionary *jsonDictionary  = (NSDictionary *) result; //convert to an array
         
-        self.authOutputJsonData = jsonDictionary;
+        NSLog(@"Dictionary: %@", [jsonDictionary description]);
         
-        self.fullName = jsonDictionary[@"user"][@"full_name"];
-        self._id = jsonDictionary[@"user"][@"_id"];
-        self.bio = jsonDictionary[@"user"][@"bio"];
-        self.birth_date = jsonDictionary[@"user"][@"birth_date"];
-        self.gender_filter = jsonDictionary[@"user"][@"gender_filter"];
-        self.gender = jsonDictionary[@"user"][@"gender"];
-        self.create_date = jsonDictionary[@"user"][@"create_date"];
-        self.api_token = jsonDictionary[@"token"];
-        self.ping_time=jsonDictionary[@"user"][@"ping_time"];
+       
         
-        
-        NSMutableArray *tempImageArray = [NSMutableArray new];
-        for (id element in jsonDictionary[@"user"][@"photos"]) {
-            NSString *path = element[@"url"];
+        if (self.currentConnection == Authentication) {
             
-            NSURL *url = [NSURL URLWithString:path];
-            NSData *data = [NSData dataWithContentsOfURL:url];
-            UIImage *img = [[UIImage alloc] initWithData:data];
+            self.authOutputJsonData = jsonDictionary;
             
-            [tempImageArray addObject:img];
+            self.fullName = jsonDictionary[@"user"][@"full_name"];
+            self._id = jsonDictionary[@"user"][@"_id"];
+            self.bio = jsonDictionary[@"user"][@"bio"];
+            self.birth_date = jsonDictionary[@"user"][@"birth_date"];
+            self.gender_filter = jsonDictionary[@"user"][@"gender_filter"];
+            self.gender = jsonDictionary[@"user"][@"gender"];
+            self.create_date = jsonDictionary[@"user"][@"create_date"];
+            self.api_token = jsonDictionary[@"token"];
+            self.ping_time=jsonDictionary[@"user"][@"ping_time"];
             
-        }
-        
-        self.images = tempImageArray;
-        
-        
-    } else  if (self.currentConnection == UpdateFetch){
-        // if we have just done an UpdateFetch
-        
-        NSLog(@"Connection succeeded.");
-        
-       //This may need to move to the get recs function or higher up the tree
-        self.misfireConvoArray = [[NSMutableArray alloc] init];
-        
-        MisfireConvo *fakeConvo = [[MisfireConvo alloc] initWithUniqueId:@"12345" withPerson:@"530ab27b5899d6107c0000d653e2eaef56bc143f2230aee2" andPerson:@"Ne530ab27b5899d6107c0000d653e2eaef56bc143f2230aee2"];
-        fakeConvo.myClient = self;
+            
+            NSMutableArray *tempImageArray = [NSMutableArray new];
+            for (id element in jsonDictionary[@"user"][@"photos"]) {
+                NSString *path = element[@"url"];
+                
+                NSURL *url = [NSURL URLWithString:path];
+                NSData *data = [NSData dataWithContentsOfURL:url];
+                UIImage *img = [[UIImage alloc] initWithData:data];
+                
+                [tempImageArray addObject:img];
+                
+            }
+            
+            self.images = tempImageArray;
+            
+            
+        } else  if (self.currentConnection == UpdateFetch){
+            NSLog(@"Fetched updates");
+            
+           //This may need to move to the get recs function or higher up the tree
+            
+            MisfireConvo *fakeConvo = [[MisfireConvo alloc] initWithUniqueId:@"12345" withPerson:@"530ab27b5899d6107c0000d653e2eaef56bc143f2230aee2" andPerson:@"530ab27b5899d6107c0000d653e2eaef56bc143f2230aee2"];
+            fakeConvo.myClient = self;
 
-        [self.misfireConvoArray addObject:fakeConvo];
-        
-        
-        for (id conversationDictionary in jsonDictionary[@"matches"]){
-            NSDictionary *messageDict = conversationDictionary[@"messages"];
+            [self.misfireConvoArray addObject:fakeConvo];
             
-            for (int x = 0; x < self.misfireConvoArray.count; x++) {
-                MisfireConvo *convo = [self.misfireConvoArray objectAtIndex:x];
-                NSLog(@"convo is %@", convo.matchID);
-                [convo parseDict:messageDict];
-                NSLog(@"end of connectionDidLoad");
+            for (id conversationDictionary in jsonDictionary[@"matches"]){
+                NSDictionary *messageDict = conversationDictionary[@"messages"];
+                NSLog(@"self.misfireConvoArray.count = %lu", (unsigned long)self.misfireConvoArray.count);
+                for (int x = 0; x < self.misfireConvoArray.count; x++) {
+                    MisfireConvo *convo = [self.misfireConvoArray objectAtIndex:x];
+                    NSLog(@"convo is %@", convo.matchID);
+                    [convo parseDict:messageDict];
+                    NSLog(@"end of connectionDidLoad");
+                }
+            }
+            
+            //self.ping_time =
+            
+        } else if (self.currentConnection == GetRecs){
+            //get recs
+            
+            NSLog(@"Got recs");
+            
+            for (id element in jsonDictionary[@"results"]) {
+                
+                NSString *path = element[@"_id"];
+                NSLog(@"%@", path);
+                [self.recArray addObject:path];
+                }
+            }
+        
+        
+        //should i try to connect the friends to the rec function now that shin fixed the crash problem?
+        else if (self.currentConnection == MakeFriends){
+            // MakeFriends connection
+//            for (int x = 0; x==2; x++) {
+//                [self sendRequestToUrl:[NSString stringWithFormat:@"like/%@", [self.recArray objectAtIndex:x]]];
+            NSLog([jsonDictionary description]);
+            for (id element in jsonDictionary){
+                NSLog(element);
+//            NSLog([jsonDictionary valueForKey:@"likes_remaining"]);
+//                if ([temp isEqualToString: @"false"]){
+//                    NSLog(@"no match :(");
+//                } else {
+//                    NSLog(@"the match id is %@", jsonDictionary[@"match"][@"_id"]);
+//                }
             }
         }
         
-        //self.ping_time =
         
-    } else if (self.currentConnection == GetRecs){
-        //get recs
-        
-        NSLog(@"Got recs");
-        
-
-      
-            self.recArray = [[NSMutableArray alloc] init];
-        
-        for (id element in jsonDictionary[@"results"]) {
-            
-            NSString *path = element[@"_id"];
-            NSLog(@"%@", path);
-            [self.recArray addObject:path];
-            
-//            [self sendRequestToUrl:[NSString stringWithFormat:@"like/%@", path]];
-//            self.currentConnection = MakeFriends;
+        self.responseData = nil;
+        if (tinderToken == NULL){
+            tinderToken = self.api_token;
         }
-            
-        
-        } if (self.currentConnection == MakeFriends){
-        // MakeFriends connection
-        
-        if (jsonDictionary[@"match"] == 1){
-            NSLog(@"match!");
-        } else {
-            NSLog(@"no match :(");
-        }
-        
-        
+        NSLog(@"done loading");
         
     }
-    self.responseData = nil;
-    if (tinderToken == NULL){
-        tinderToken = self.api_token;
-    }
-    NSLog(@"done loading");
-    
 }
 
 

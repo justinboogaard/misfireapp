@@ -17,31 +17,42 @@
         self.matchID = matchID;
         self.person1 = person1;
         self.person2 = person2;
+        self.convoLog = [[NSMutableArray alloc] init];
+        self.oldestMessage = self.convoLog.lastObject;
+        self.oldestTimestamp = @"0";
     }
     
     return self;
 }
 
-
 //RelayMessage is called by the if statements of parseDict, parseDict will process the JSonDictionary that is handed to it, then depending on the id of who sent it, relay that message to the other person and save it in our conversation array
 //TODO i may need to add a check in the current conversation, because the JSONDict that fetchUpdates calls might not always be up to date
 - (void) relayMessage: (Message *)message {
-    NSLog(@"We got to relay!");
-    NSLog(@"Person From is %@. Person1 is %@", message.personFrom, self.person1);
-    if ([message.personFrom isEqualToString: self.person1]){
-        NSLog(@"Sending self.person2(%@) message.messageText(%@)",self.person2, message.messageText);
-        NSLog(@"the client exists and a sample variable is %@", self.myClient.facebookID);
+    
+    NSLog(@"the oldest timestamp is %@",self.oldestTimestamp);
+    NSLog(@"the messages timestamp is %@", message.timestamp);
+    if (([message.personFrom isEqualToString: self.person1]) && ([message.timestamp integerValue] > [self.oldestTimestamp integerValue])){
         [self.myClient sendRequestToUrl:[NSString stringWithFormat:@"user/matches/%@", self.person2] withPayload:[NSString stringWithFormat:@"{\"message\": \"%@\"}",message.messageText]];
+        NSLog(@"the message had a bigger timestamp");
         NSLog(@"message sent!");
+        [self addMessage:message];
+        self.oldestMessage = self.convoLog.lastObject;
+        self.oldestTimestamp = self.oldestMessage.timestamp;
+    } else if ([message.personFrom isEqualToString: self.person2] && ([message.timestamp integerValue] > [self.oldestTimestamp integerValue])){
+//        [self.myClient sendRequestToUrl:[NSString stringWithFormat:@"user/matches/%@", self.person1] withPayload:[NSString stringWithFormat:@"{\"message\": \"%@\"}",message.messageText]];
+        NSLog(@"the message had a smaller timestamp");
+        [self addMessage:message];
+        self.oldestMessage = self.convoLog.lastObject;
+        self.oldestTimestamp = self.oldestMessage.timestamp;
     } else {
-        [self.myClient sendRequestToUrl:[NSString stringWithFormat:@"user/matches/%@", self.person1] withPayload:[NSString stringWithFormat:@"{\"message\": \"%@\"}",message.messageText]];
+        NSLog(@"Something bad happened in the relay message function");
     }
+    NSLog(@"this is my covoLog %@:", self.convoLog);
 }
 
 //This adds new messages to the conversation array, which will be called by the UI to auto populate the converastion
 - (void) addMessage:(Message *)message {
-    //might have to be broader
-    self.convoLog = [[NSMutableArray alloc] init];
+    //initialization needed to be broader, put it into initialization function 
     [self.convoLog addObject:message];
     NSLog(@"ConvoLog count = %lu", (unsigned long)self.convoLog.count);
 }
@@ -49,10 +60,8 @@
 //something that tells the convo to update itself
 - (void) parseDict:(NSDictionary *)updatedDict{
     //for loop
-     NSLog(@"parseDict has been called!");
-        NSLog(@"Dictionary being sent is %@", [updatedDict description]);
     //make sure to delete this inialization later
-    [self initWithUniqueId:@"convo with May" withPerson:@"530ab27b5899d6107c0000d653e2eaef56bc143f2230aee2" andPerson:@"530ab27b5899d6107c0000d653e2eaef56bc143f2230aee2"];
+    [self initWithUniqueId:@"convo with May" withPerson:@"530ab27b5899d6107c0000d653ec344f9d85b41c2fe127a7" andPerson:@"530ab27b5899d6107c0000d653f15097fc7e799a4927734d"];
   
     
     //THIS IS A BIG DEAL: I'm parsing the data to look for matchID NOT from because when i send the message later I'll be sending it to the MATCH ID. the MatchID IS the from.
@@ -63,16 +72,13 @@
         NSString *messageText = element[@"message"];
         
         NSLog(@"From = %@, timestamp =%@ and messageText = %@", from, timestamp, messageText);
-                                                
         if ([from isEqualToString:self.person1]) {
-            NSLog(@"we're inside the if loop");
             Message *newMessage = [[Message alloc] initWithMessage:messageText from:from atTime:timestamp];
-            NSLog(@"new message has messageText %@", newMessage.messageText);
-            [self addMessage:newMessage];
+            NSLog(@"*******");
+            NSLog(@"Message is : %@", newMessage.messageText);
             [self relayMessage:newMessage];
         } else if ([from isEqualToString:self.person2]) {
             Message *newMessage = [[Message alloc] initWithMessage:messageText from:from atTime:timestamp];
-            [self addMessage:newMessage];
             [self relayMessage:newMessage];
         } else {
             NSLog(@"if loop did run");
