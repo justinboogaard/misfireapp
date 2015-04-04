@@ -102,16 +102,21 @@
 }
 
 - (IBAction)getRecs:(id) sender{
-    [client sendRequestToUrl:@"recs" withPayload:@"{\"limit\": 1 }"];
+    [client sendRequestToUrl:@"recs" withPayload:@"{\"limit\": 10 }"];
     client.currentConnection = GetRecs;
 }
 
 - (IBAction)makeFriends:(id) sender{
-    
-    NSLog(@"making friends with %@", client.recArray[0]);
-        [client sendRequestToUrl:[NSString stringWithFormat:@"like/%@", client.recArray[0]]];
-        client.currentConnection = MakeFriends;
-
+    if (client.recArray.count ==0){
+        [client sendRequestToUrl:@"recs" withPayload:@"{\"limit\": 10 }"];
+        client.currentConnection = GetRecs;
+    } else{
+        NSLog(@"recArray: %@", client.recArray);
+            NSLog(@"making friends with %@", client.recArray[0]);
+            [client sendRequestToUrl:[NSString stringWithFormat:@"like/%@", client.recArray[0]]];
+            [client.recArray removeObject:client.recArray.firstObject];
+            client.currentConnection = MakeFriends;
+    }
 }
 
 - (IBAction)loadGUI:(id)sender {

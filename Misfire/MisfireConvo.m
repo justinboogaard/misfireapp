@@ -39,7 +39,7 @@
         self.oldestMessage = self.convoLog.lastObject;
         self.oldestTimestamp = self.oldestMessage.timestamp;
     } else if ([message.personFrom isEqualToString: self.person2] && ([message.timestamp integerValue] > [self.oldestTimestamp integerValue])){
-//        [self.myClient sendRequestToUrl:[NSString stringWithFormat:@"user/matches/%@", self.person1] withPayload:[NSString stringWithFormat:@"{\"message\": \"%@\"}",message.messageText]];
+        [self.myClient sendRequestToUrl:[NSString stringWithFormat:@"user/matches/%@", self.person1] withPayload:[NSString stringWithFormat:@"{\"message\": \"%@\"}",message.messageText]];
         NSLog(@"the message had a smaller timestamp");
         [self addMessage:message];
         self.oldestMessage = self.convoLog.lastObject;

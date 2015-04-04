@@ -66,6 +66,7 @@ typedef enum
 @property (strong, nonatomic) NSString *possibleMatch11;
 @property (strong, nonatomic) NSMutableArray *recArray;
 @property (strong, nonatomic) NSMutableArray *misfireConvoArray;
+@property (strong, nonatomic) NSMutableArray *misfirePair;
 
 
 

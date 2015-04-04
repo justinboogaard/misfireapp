@@ -41,6 +41,7 @@
         self.facebookID = facebookID;
         self.misfireConvoArray = [[NSMutableArray alloc] init];
         self.recArray = [[NSMutableArray alloc] init];
+        self.misfirePair = [[NSMutableArray alloc] init];
     }
     
     return self;
@@ -238,11 +239,6 @@
             
            //This may need to move to the get recs function or higher up the tree
             
-            MisfireConvo *fakeConvo = [[MisfireConvo alloc] initWithUniqueId:@"12345" withPerson:@"530ab27b5899d6107c0000d653e2eaef56bc143f2230aee2" andPerson:@"530ab27b5899d6107c0000d653e2eaef56bc143f2230aee2"];
-            fakeConvo.myClient = self;
-
-            [self.misfireConvoArray addObject:fakeConvo];
-            
             for (id conversationDictionary in jsonDictionary[@"matches"]){
                 NSDictionary *messageDict = conversationDictionary[@"messages"];
                 NSLog(@"self.misfireConvoArray.count = %lu", (unsigned long)self.misfireConvoArray.count);
@@ -270,23 +266,35 @@
             }
         
         
+        
+        
         //should i try to connect the friends to the rec function now that shin fixed the crash problem?
         else if (self.currentConnection == MakeFriends){
             // MakeFriends connection
 //            for (int x = 0; x==2; x++) {
 //                [self sendRequestToUrl:[NSString stringWithFormat:@"like/%@", [self.recArray objectAtIndex:x]]];
-            NSLog([jsonDictionary description]);
-            for (id element in jsonDictionary){
-                NSLog(element);
-//            NSLog([jsonDictionary valueForKey:@"likes_remaining"]);
-//                if ([temp isEqualToString: @"false"]){
-//                    NSLog(@"no match :(");
-//                } else {
-//                    NSLog(@"the match id is %@", jsonDictionary[@"match"][@"_id"]);
-//                }
+
+            if ([[jsonDictionary objectForKey:@"match"] isKindOfClass:[NSNumber class]]) {
+                NSLog(@"no match here");
             }
+            else if ((jsonDictionary[@"match"][@"_id"])) {
+                    NSString *matchID = (jsonDictionary[@"match"][@"_id"]);
+                    NSLog(@"There was a match and the id is %@", matchID);
+                    [self.misfirePair addObject:matchID];
+                    NSLog(@"the misfire pair array just added %@", self.misfirePair);
+                    if (self.misfirePair.count == 2) {
+                        NSLog(@"there are two match id's in the pair array so we're gonna initialize a new convo");
+                        MisfireConvo *fakeConvo = [[MisfireConvo alloc] initWithUniqueId:(@"%@%@", self.misfirePair[0], self.misfirePair[1]) withPerson:(@"%@", self.misfirePair[0]) andPerson:(@"%@", self.misfirePair[1])];
+                        fakeConvo.myClient = self;
+                        [self.misfireConvoArray addObject:fakeConvo];
+                        [self.misfirePair removeAllObjects];
+                        NSLog(@"conversation id %@ intialized and misfirePair is back at %lu", [[self.misfireConvoArray lastObject]matchID], (unsigned long)self.misfirePair.count);
+                    }
+            } else {
+                    NSLog(@"no match :(");
+                }
         }
-        
+
         
         self.responseData = nil;
         if (tinderToken == NULL){
