@@ -234,7 +234,6 @@
             
             self.images = tempImageArray;
             
-            
         } else  if (self.currentConnection == UpdateFetch){
             NSLog(@"Fetched updates");
             
@@ -281,19 +280,23 @@
                 NSLog(@"logging user with id %@", [[self.recArray lastObject] objectForKey:@"id"]);
             }
             
-            UIImageView *imgview = [[UIImageView alloc] initWithFrame:CGRectMake(00, 300, 50, 50)];
+            
+            
+            UIImageView *imgview = [[UIImageView alloc] initWithFrame:CGRectMake(00, 600, 200, 200)];
             [imgview setImage:[[self.recArray objectAtIndex:0] objectForKey:@"picture"]];
             [imgview setContentMode:UIViewContentModeScaleAspectFill];
             [self.myView.view addSubview:imgview];
-            
+            [imgview setCenter:self.myView.view.center];
+            [self.myView.nameLabel setText:[[self.recArray objectAtIndex:0] objectForKey:@"firstName"]];
+            NSLog(@"the name is %@",[[self.recArray objectAtIndex:0] objectForKey:@"firstName"]);
+            self.myView.nameLabel.hidden = NO;
+            self.myView.instructionText.hidden = YES;
         }
         
         
-        //should i try to connect the friends to the rec function now that shin fixed the crash problem?
+
         else if (self.currentConnection == MakeFriends){
-            // MakeFriends connection
-//            for (int x = 0; x==2; x++) {
-//                [self sendRequestToUrl:[NSString stringWithFormat:@"like/%@", [self.recArray objectAtIndex:x]]];
+            
 
             if ([[jsonDictionary objectForKey:@"match"] isKindOfClass:[NSNumber class]]) {
                 NSLog(@"no match here");
@@ -303,6 +306,13 @@
                     NSLog(@"There was a match and the id is %@", matchID);
                     [self.misfirePair addObject:matchID];
                     NSLog(@"the misfire pair array just added %@", self.misfirePair);
+                if (self.misfireConvoArray.count ==1 ){
+                    UIImageView *matchview = [[UIImageView alloc] initWithFrame:CGRectMake(30, 75, 100, 100)];
+                    [matchview setImage:[[self.recArray objectAtIndex:0] objectForKey:@"picture"]];
+                    [matchview setContentMode:UIViewContentModeScaleAspectFill];
+                    [self.myView.view addSubview:matchview];
+                    
+                }
                     if (self.misfirePair.count == 2) {
                         NSLog(@"there are two match id's in the pair array so we're gonna initialize a new convo");
                         MisfireConvo *fakeConvo = [[MisfireConvo alloc] initWithUniqueId:(@"%@%@", self.misfirePair[0], self.misfirePair[1]) withPerson:(@"%@", self.misfirePair[0]) andPerson:(@"%@", self.misfirePair[1])];
@@ -310,11 +320,11 @@
                         [self.misfireConvoArray addObject:fakeConvo];
                         [self.misfirePair removeAllObjects];
                         NSLog(@"conversation id %@ intialized and misfirePair is back at %lu", [[self.misfireConvoArray lastObject]matchID], (unsigned long)self.misfirePair.count);
-                    }
+                                            }
             } else {
                     NSLog(@"no match :(");
                 }
-        }
+            }
 
         
         self.responseData = nil;

@@ -67,7 +67,9 @@ typedef enum
 @property (strong, nonatomic) NSMutableArray *recArray;
 @property (strong, nonatomic) NSMutableArray *misfireConvoArray;
 @property (strong, nonatomic) NSMutableArray *misfirePair;
-@property (strong, nonatomic) UIViewController *myView;
+@property (strong, nonatomic) ViewController *myView;
+
+
 
 
 

@@ -18,8 +18,6 @@
 		D951679D1A92F03700C3754D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D951679B1A92F03700C3754D /* LaunchScreen.xib */; };
 		D95167A91A92F03700C3754D /* MisfireTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D95167A81A92F03700C3754D /* MisfireTests.m */; };
 		D9B4A5A91A92F10F00751F76 /* TinderRootClient.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B4A5A81A92F10F00751F76 /* TinderRootClient.m */; };
-		D9B4A5AC1A92F12D00751F76 /* TinderGuestClient.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B4A5AB1A92F12D00751F76 /* TinderGuestClient.m */; };
-		D9B4A5AF1A92F19400751F76 /* SharedManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B4A5AE1A92F19400751F76 /* SharedManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,10 +51,6 @@
 		D95167A81A92F03700C3754D /* MisfireTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MisfireTests.m; sourceTree = "<group>"; };
 		D9B4A5A71A92F10F00751F76 /* TinderRootClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TinderRootClient.h; sourceTree = "<group>"; };
 		D9B4A5A81A92F10F00751F76 /* TinderRootClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TinderRootClient.m; sourceTree = "<group>"; };
-		D9B4A5AA1A92F12D00751F76 /* TinderGuestClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TinderGuestClient.h; sourceTree = "<group>"; };
-		D9B4A5AB1A92F12D00751F76 /* TinderGuestClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TinderGuestClient.m; sourceTree = "<group>"; };
-		D9B4A5AD1A92F19400751F76 /* SharedManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SharedManager.h; sourceTree = "<group>"; };
-		D9B4A5AE1A92F19400751F76 /* SharedManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SharedManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,10 +110,6 @@
 				396ECD8B1AC7880B00B08697 /* MisfireConvo.m */,
 				396ECD931AC7CF3400B08697 /* Message.h */,
 				396ECD941AC7CF3400B08697 /* Message.m */,
-				D9B4A5AA1A92F12D00751F76 /* TinderGuestClient.h */,
-				D9B4A5AB1A92F12D00751F76 /* TinderGuestClient.m */,
-				D9B4A5AD1A92F19400751F76 /* SharedManager.h */,
-				D9B4A5AE1A92F19400751F76 /* SharedManager.m */,
 				D95167931A92F03700C3754D /* ViewController.h */,
 				D95167941A92F03700C3754D /* ViewController.m */,
 				D95167961A92F03700C3754D /* Main.storyboard */,
@@ -260,11 +250,9 @@
 				D95167951A92F03700C3754D /* ViewController.m in Sources */,
 				396ECD8C1AC7880B00B08697 /* MisfireConvo.m in Sources */,
 				D95167921A92F03700C3754D /* AppDelegate.m in Sources */,
-				D9B4A5AF1A92F19400751F76 /* SharedManager.m in Sources */,
 				D9B4A5A91A92F10F00751F76 /* TinderRootClient.m in Sources */,
 				396ECD951AC7CF3400B08697 /* Message.m in Sources */,
 				D951678F1A92F03700C3754D /* main.m in Sources */,
-				D9B4A5AC1A92F12D00751F76 /* TinderGuestClient.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

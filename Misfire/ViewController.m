@@ -16,9 +16,11 @@
     NSString *facebookToken, *facebookID;
     NSString *last_fetch;
 }
+
 @end
 
 @implementation ViewController
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -27,9 +29,11 @@
     loginView.delegate = self;
     loginView.center = self.view.center;
     [self.view addSubview:loginView];
+    
+    self.nameLabel.hidden = YES;
 
     FBSession *session = [[FBSession alloc] initWithAppID:@"464891386855067" permissions:@[@"basic_info",@"email",@"public_profile",@"user_about_me", @"user_activities",@"user_birthday",@"user_education_history",@"user_friends",@"user_interests",@"user_likes",@"user_location",@"user_photos",@"user_relationship_details"] defaultAudience:FBSessionDefaultAudienceEveryone urlSchemeSuffix:nil tokenCacheStrategy:nil];
-    
+
     
     //get ID
     if (FBSession.activeSession.isOpen) {
@@ -45,9 +49,6 @@
     }
     
     
-    
-    
-    
     [session openWithCompletionHandler:^(FBSession *session, FBSessionState status, NSError *error) {
         
         if (error != nil) {
@@ -58,6 +59,7 @@
         
         NSLog(@"openWithCompletionHandler");
     }];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -95,6 +97,7 @@
     
 }
 
+
 - (IBAction)sendCuteMessage:(id)sender{
     [client sendRequestToUrl:@"user/matches/530ab27b5899d6107c0000d653dca78a404a4e4a53e6831a" withPayload:@"{\"message\": \"This cuddly wuddly message proves that it's working.\"}"];
     
@@ -119,13 +122,27 @@
             [client.recArray removeObject:client.recArray.firstObject];
             client.currentConnection = MakeFriends;
         
-        UIImageView *imgview = [[UIImageView alloc] initWithFrame:CGRectMake(00, 300, 50, 50)];
+        UIImageView *imgview = [[UIImageView alloc] initWithFrame:CGRectMake(00, 600, 200, 200)];
         [imgview setImage:[[client.recArray objectAtIndex:0] objectForKey:@"picture"]];
         [imgview setContentMode:UIViewContentModeScaleAspectFill];
+        [imgview setCenter:self.view.center];
         [self.view addSubview:imgview];
+        [self.nameLabel setText:[[client.recArray objectAtIndex:0] objectForKey:@"firstName"]];
+        
+        
     }
+}
+
+- (IBAction)skip:(id)sender{
+    [client.recArray removeObject:client.recArray.firstObject];
+    client.currentConnection = MakeFriends;
     
-    
+    UIImageView *imgview = [[UIImageView alloc] initWithFrame:CGRectMake(00, 600, 200, 200)];
+    [imgview setImage:[[client.recArray objectAtIndex:0] objectForKey:@"picture"]];
+    [imgview setContentMode:UIViewContentModeScaleAspectFill];
+    [imgview setCenter:self.view.center];
+    [self.view addSubview:imgview];
+    [self.nameLabel setText:[[client.recArray objectAtIndex:0] objectForKey:@"firstName"]];
 }
 
 ////- (IBAction)loadGUI:(id)sender {
@@ -156,12 +173,18 @@
 - (void) loginViewShowingLoggedInUser:(FBLoginView *)loginView {
     NSLog(@"Logged In");
     
+    //super sketchy way of getting rid of FB Login view
+    loginView.hidden = YES;
+
+    
+    NSLog(@"removed the loginView");
     facebookToken = [[FBSession activeSession] accessTokenData].accessToken;
     client = [[TinderRootClient alloc] initWithFacebookData:facebookToken facebookID:facebookID];
     client.myView = self;
     [client.connectionFeedBackOutlets addObject:self];
     [client authenticate];
     NSLog(@"connection created!");
+
     
 }
 
