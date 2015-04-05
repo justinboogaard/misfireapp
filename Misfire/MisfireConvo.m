@@ -12,7 +12,7 @@
 
 @implementation MisfireConvo
 
-- (id) initWithUniqueId:(NSString *)matchID withPerson: (NSString *)person1 andPerson: (NSString *)person2{
+- (id) initWithUniqueId:(NSString *)matchID withPerson: (NSMutableDictionary *)person1 andPerson: (NSMutableDictionary *)person2{
     if ((self = [super init])) {
         self.matchID = matchID;
         self.person1 = person1;
@@ -31,15 +31,15 @@
     
     NSLog(@"the oldest timestamp is %@",self.oldestTimestamp);
     NSLog(@"the messages timestamp is %@", message.timestamp);
-    if (([message.personFrom isEqualToString: self.person1]) && ([message.timestamp integerValue] > [self.oldestTimestamp integerValue])){
-        [self.myClient sendRequestToUrl:[NSString stringWithFormat:@"user/matches/%@", self.person2] withPayload:[NSString stringWithFormat:@"{\"message\": \"%@\"}",message.messageText]];
+    if (([message.personFrom isEqualToString: [self.person1 objectForKey:@"matchID"]]) && ([message.timestamp integerValue] > [self.oldestTimestamp integerValue])){
+        [self.myClient sendRequestToUrl:[NSString stringWithFormat:@"user/matches/%@", [self.person2 objectForKey:@"matchID"]] withPayload:[NSString stringWithFormat:@"{\"message\": \"%@\"}",message.messageText]];
         NSLog(@"the message had a bigger timestamp");
         NSLog(@"message sent!");
         [self addMessage:message];
         self.oldestMessage = self.convoLog.lastObject;
         self.oldestTimestamp = self.oldestMessage.timestamp;
-    } else if ([message.personFrom isEqualToString: self.person2] && ([message.timestamp integerValue] > [self.oldestTimestamp integerValue])){
-        [self.myClient sendRequestToUrl:[NSString stringWithFormat:@"user/matches/%@", self.person1] withPayload:[NSString stringWithFormat:@"{\"message\": \"%@\"}",message.messageText]];
+    } else if ([message.personFrom isEqualToString: [self.person2 objectForKey:@"matchID"]] && ([message.timestamp integerValue] > [self.oldestTimestamp integerValue])){
+        [self.myClient sendRequestToUrl:[NSString stringWithFormat:@"user/matches/%@", [self.person1 objectForKey:@"matchID"]] withPayload:[NSString stringWithFormat:@"{\"message\": \"%@\"}",message.messageText]];
         NSLog(@"the message had a smaller timestamp");
         [self addMessage:message];
         self.oldestMessage = self.convoLog.lastObject;
@@ -60,9 +60,6 @@
 //something that tells the convo to update itself
 - (void) parseDict:(NSDictionary *)updatedDict{
     //for loop
-    //make sure to delete this inialization later
-    [self initWithUniqueId:@"convo with May" withPerson:@"530ab27b5899d6107c0000d653ec344f9d85b41c2fe127a7" andPerson:@"530ab27b5899d6107c0000d653f15097fc7e799a4927734d"];
-  
     
     //THIS IS A BIG DEAL: I'm parsing the data to look for matchID NOT from because when i send the message later I'll be sending it to the MATCH ID. the MatchID IS the from.
     
@@ -72,12 +69,12 @@
         NSString *messageText = element[@"message"];
         
         NSLog(@"From = %@, timestamp =%@ and messageText = %@", from, timestamp, messageText);
-        if ([from isEqualToString:self.person1]) {
+        if ([from isEqualToString:[self.person1 objectForKey:@"matchID"]]) {
             Message *newMessage = [[Message alloc] initWithMessage:messageText from:from atTime:timestamp];
             NSLog(@"*******");
             NSLog(@"Message is : %@", newMessage.messageText);
             [self relayMessage:newMessage];
-        } else if ([from isEqualToString:self.person2]) {
+        } else if ([from isEqualToString:[self.person2 objectForKey:@"matchID"]]) {
             Message *newMessage = [[Message alloc] initWithMessage:messageText from:from atTime:timestamp];
             [self relayMessage:newMessage];
         } else {

@@ -119,15 +119,16 @@
         NSLog(@"recArray: %@", [[client.recArray objectAtIndex:0] objectForKey:@"id"]);
             NSLog(@"making friends with %@", [[client.recArray objectAtIndex:0] objectForKey:@"id"]);
             [client sendRequestToUrl:[NSString stringWithFormat:@"like/%@", [[client.recArray objectAtIndex:0] objectForKey:@"id"]]];
-            [client.recArray removeObject:client.recArray.firstObject];
+        
             client.currentConnection = MakeFriends;
         
         UIImageView *imgview = [[UIImageView alloc] initWithFrame:CGRectMake(00, 600, 200, 200)];
-        [imgview setImage:[[client.recArray objectAtIndex:0] objectForKey:@"picture"]];
+        [imgview setImage:[[client.recArray objectAtIndex:1] objectForKey:@"picture"]];
         [imgview setContentMode:UIViewContentModeScaleAspectFill];
         [imgview setCenter:self.view.center];
         [self.view addSubview:imgview];
-        [self.nameLabel setText:[[client.recArray objectAtIndex:0] objectForKey:@"firstName"]];
+        [self.nameLabel setText:[[client.recArray objectAtIndex:1] objectForKey:@"firstName"]];
+        [client.recArray removeObject:client.recArray.firstObject];
         
         
     }

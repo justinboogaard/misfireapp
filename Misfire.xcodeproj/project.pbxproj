@@ -7,17 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		396ECD8C1AC7880B00B08697 /* MisfireConvo.m in Sources */ = {isa = PBXBuildFile; fileRef = 396ECD8B1AC7880B00B08697 /* MisfireConvo.m */; };
-		396ECD951AC7CF3400B08697 /* Message.m in Sources */ = {isa = PBXBuildFile; fileRef = 396ECD941AC7CF3400B08697 /* Message.m */; };
+		39FD10901AD14D5500503361 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 39FD108E1AD14D5500503361 /* AppDelegate.m */; };
+		39FD10911AD14D5500503361 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 39FD108F1AD14D5500503361 /* Images.xcassets */; };
+		39FD10931AD14D5B00503361 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 39FD10921AD14D5B00503361 /* Info.plist */; };
+		39FD10951AD14D6200503361 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 39FD10941AD14D6200503361 /* main.m */; };
+		39FD10971AD14D7300503361 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 39FD10961AD14D7300503361 /* LaunchScreen.xib */; };
+		39FD10991AD14D7B00503361 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39FD10981AD14D7A00503361 /* Main.storyboard */; };
+		39FD10A01AD14D8900503361 /* Message.m in Sources */ = {isa = PBXBuildFile; fileRef = 39FD109B1AD14D8900503361 /* Message.m */; };
+		39FD10A11AD14D8900503361 /* MisfireConvo.m in Sources */ = {isa = PBXBuildFile; fileRef = 39FD109D1AD14D8900503361 /* MisfireConvo.m */; };
+		39FD10A21AD14D8900503361 /* TinderRootClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 39FD109F1AD14D8900503361 /* TinderRootClient.m */; };
+		39FD10A51AD14D9100503361 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39FD10A41AD14D9100503361 /* ViewController.m */; };
 		9ECB3B481ABE3F5000DAA0AC /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9ECB3B471ABE3F5000DAA0AC /* FacebookSDK.framework */; };
-		D951678F1A92F03700C3754D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D951678E1A92F03700C3754D /* main.m */; };
-		D95167921A92F03700C3754D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D95167911A92F03700C3754D /* AppDelegate.m */; };
-		D95167951A92F03700C3754D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D95167941A92F03700C3754D /* ViewController.m */; };
-		D95167981A92F03700C3754D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D95167961A92F03700C3754D /* Main.storyboard */; };
-		D951679A1A92F03700C3754D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D95167991A92F03700C3754D /* Images.xcassets */; };
-		D951679D1A92F03700C3754D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D951679B1A92F03700C3754D /* LaunchScreen.xib */; };
 		D95167A91A92F03700C3754D /* MisfireTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D95167A81A92F03700C3754D /* MisfireTests.m */; };
-		D9B4A5A91A92F10F00751F76 /* TinderRootClient.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B4A5A81A92F10F00751F76 /* TinderRootClient.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,26 +32,26 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		396ECD8A1AC7880B00B08697 /* MisfireConvo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MisfireConvo.h; sourceTree = "<group>"; };
-		396ECD8B1AC7880B00B08697 /* MisfireConvo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MisfireConvo.m; sourceTree = "<group>"; };
-		396ECD931AC7CF3400B08697 /* Message.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Message.h; sourceTree = "<group>"; };
-		396ECD941AC7CF3400B08697 /* Message.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Message.m; sourceTree = "<group>"; };
+		39FD108D1AD14D5500503361 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		39FD108E1AD14D5500503361 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		39FD108F1AD14D5500503361 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		39FD10921AD14D5B00503361 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		39FD10941AD14D6200503361 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		39FD10961AD14D7300503361 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
+		39FD10981AD14D7A00503361 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		39FD109A1AD14D8900503361 /* Message.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Message.h; sourceTree = "<group>"; };
+		39FD109B1AD14D8900503361 /* Message.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Message.m; sourceTree = "<group>"; };
+		39FD109C1AD14D8900503361 /* MisfireConvo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MisfireConvo.h; sourceTree = "<group>"; };
+		39FD109D1AD14D8900503361 /* MisfireConvo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MisfireConvo.m; sourceTree = "<group>"; };
+		39FD109E1AD14D8900503361 /* TinderRootClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TinderRootClient.h; sourceTree = "<group>"; };
+		39FD109F1AD14D8900503361 /* TinderRootClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TinderRootClient.m; sourceTree = "<group>"; };
+		39FD10A31AD14D9100503361 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		39FD10A41AD14D9100503361 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		9ECB3B471ABE3F5000DAA0AC /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 		D95167891A92F03700C3754D /* Misfire.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Misfire.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		D951678D1A92F03700C3754D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D951678E1A92F03700C3754D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		D95167901A92F03700C3754D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		D95167911A92F03700C3754D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		D95167931A92F03700C3754D /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		D95167941A92F03700C3754D /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		D95167971A92F03700C3754D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		D95167991A92F03700C3754D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		D951679C1A92F03700C3754D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		D95167A21A92F03700C3754D /* MisfireTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MisfireTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D95167A71A92F03700C3754D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D95167A81A92F03700C3754D /* MisfireTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MisfireTests.m; sourceTree = "<group>"; };
-		D9B4A5A71A92F10F00751F76 /* TinderRootClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TinderRootClient.h; sourceTree = "<group>"; };
-		D9B4A5A81A92F10F00751F76 /* TinderRootClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TinderRootClient.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,19 +103,19 @@
 		D951678B1A92F03700C3754D /* Misfire */ = {
 			isa = PBXGroup;
 			children = (
-				D95167901A92F03700C3754D /* AppDelegate.h */,
-				D95167911A92F03700C3754D /* AppDelegate.m */,
-				D9B4A5A71A92F10F00751F76 /* TinderRootClient.h */,
-				D9B4A5A81A92F10F00751F76 /* TinderRootClient.m */,
-				396ECD8A1AC7880B00B08697 /* MisfireConvo.h */,
-				396ECD8B1AC7880B00B08697 /* MisfireConvo.m */,
-				396ECD931AC7CF3400B08697 /* Message.h */,
-				396ECD941AC7CF3400B08697 /* Message.m */,
-				D95167931A92F03700C3754D /* ViewController.h */,
-				D95167941A92F03700C3754D /* ViewController.m */,
-				D95167961A92F03700C3754D /* Main.storyboard */,
-				D95167991A92F03700C3754D /* Images.xcassets */,
-				D951679B1A92F03700C3754D /* LaunchScreen.xib */,
+				39FD108D1AD14D5500503361 /* AppDelegate.h */,
+				39FD108E1AD14D5500503361 /* AppDelegate.m */,
+				39FD109E1AD14D8900503361 /* TinderRootClient.h */,
+				39FD109F1AD14D8900503361 /* TinderRootClient.m */,
+				39FD109A1AD14D8900503361 /* Message.h */,
+				39FD109B1AD14D8900503361 /* Message.m */,
+				39FD109C1AD14D8900503361 /* MisfireConvo.h */,
+				39FD109D1AD14D8900503361 /* MisfireConvo.m */,
+				39FD10A31AD14D9100503361 /* ViewController.h */,
+				39FD10A41AD14D9100503361 /* ViewController.m */,
+				39FD10961AD14D7300503361 /* LaunchScreen.xib */,
+				39FD108F1AD14D5500503361 /* Images.xcassets */,
+				39FD10981AD14D7A00503361 /* Main.storyboard */,
 				D951678C1A92F03700C3754D /* Supporting Files */,
 			);
 			path = Misfire;
@@ -123,8 +124,8 @@
 		D951678C1A92F03700C3754D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				D951678D1A92F03700C3754D /* Info.plist */,
-				D951678E1A92F03700C3754D /* main.m */,
+				39FD10921AD14D5B00503361 /* Info.plist */,
+				39FD10941AD14D6200503361 /* main.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -227,9 +228,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D95167981A92F03700C3754D /* Main.storyboard in Resources */,
-				D951679D1A92F03700C3754D /* LaunchScreen.xib in Resources */,
-				D951679A1A92F03700C3754D /* Images.xcassets in Resources */,
+				39FD10911AD14D5500503361 /* Images.xcassets in Resources */,
+				39FD10971AD14D7300503361 /* LaunchScreen.xib in Resources */,
+				39FD10931AD14D5B00503361 /* Info.plist in Resources */,
+				39FD10991AD14D7B00503361 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -247,12 +249,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D95167951A92F03700C3754D /* ViewController.m in Sources */,
-				396ECD8C1AC7880B00B08697 /* MisfireConvo.m in Sources */,
-				D95167921A92F03700C3754D /* AppDelegate.m in Sources */,
-				D9B4A5A91A92F10F00751F76 /* TinderRootClient.m in Sources */,
-				396ECD951AC7CF3400B08697 /* Message.m in Sources */,
-				D951678F1A92F03700C3754D /* main.m in Sources */,
+				39FD10A51AD14D9100503361 /* ViewController.m in Sources */,
+				39FD10901AD14D5500503361 /* AppDelegate.m in Sources */,
+				39FD10A11AD14D8900503361 /* MisfireConvo.m in Sources */,
+				39FD10A21AD14D8900503361 /* TinderRootClient.m in Sources */,
+				39FD10A01AD14D8900503361 /* Message.m in Sources */,
+				39FD10951AD14D6200503361 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -273,25 +275,6 @@
 			targetProxy = D95167A31A92F03700C3754D /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		D95167961A92F03700C3754D /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D95167971A92F03700C3754D /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		D951679B1A92F03700C3754D /* LaunchScreen.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D951679C1A92F03700C3754D /* Base */,
-			);
-			name = LaunchScreen.xib;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		D95167AA1A92F03700C3754D /* Debug */ = {

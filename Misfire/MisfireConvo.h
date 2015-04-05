@@ -17,14 +17,14 @@
 @interface MisfireConvo : NSObject
 
 @property (nonatomic, strong) NSString *matchID;
-@property (nonatomic, strong) NSString *person1;
-@property (nonatomic, strong) NSString *person2;
+@property (nonatomic, strong) NSMutableDictionary *person1;
+@property (nonatomic, strong) NSMutableDictionary *person2;
 @property (nonatomic, strong) NSMutableArray *convoLog;
 @property (nonatomic, strong) TinderRootClient *myClient;
 @property (nonatomic, strong) Message *oldestMessage;
 @property (nonatomic, strong) NSString *oldestTimestamp;
 
-- (id) initWithUniqueId:(NSString *)matchID withPerson:(NSString *)person1 andPerson:(NSString *)person2;
+- (id) initWithUniqueId:(NSString *)matchID withPerson:(NSMutableDictionary *)person1 andPerson:(NSMutableDictionary *)person2;
 - (void) relayMessage: (Message *)newMessage;
 - (void) addMessage: (Message *)message;
 - (void) parseDict:(NSDictionary *)updatedSDict;

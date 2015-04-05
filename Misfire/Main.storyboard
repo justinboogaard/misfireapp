@@ -173,15 +173,15 @@
                                 <exclude reference="MZJ-Fi-eqN"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="7Gz-w8-2HY"/>
-                                <exclude reference="nQK-Yq-WGd"/>
-                                <exclude reference="eZu-Co-MDz"/>
-                                <exclude reference="ibE-Gh-c6Q"/>
                                 <exclude reference="HEK-Nc-BIo"/>
                                 <exclude reference="P9M-yR-1jB"/>
                                 <exclude reference="et5-da-IEz"/>
+                                <exclude reference="eZu-Co-MDz"/>
+                                <exclude reference="ibE-Gh-c6Q"/>
                                 <exclude reference="IuV-jX-iPf"/>
                                 <exclude reference="PTc-wu-h0k"/>
+                                <exclude reference="7Gz-w8-2HY"/>
+                                <exclude reference="nQK-Yq-WGd"/>
                                 <exclude reference="Cxa-WQ-dlU"/>
                                 <exclude reference="pRT-iR-Xjc"/>
                             </mask>
@@ -193,15 +193,15 @@
                                 <include reference="MZJ-Fi-eqN"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="7Gz-w8-2HY"/>
-                                <include reference="nQK-Yq-WGd"/>
-                                <include reference="eZu-Co-MDz"/>
-                                <include reference="ibE-Gh-c6Q"/>
                                 <include reference="HEK-Nc-BIo"/>
                                 <include reference="P9M-yR-1jB"/>
                                 <include reference="et5-da-IEz"/>
+                                <include reference="eZu-Co-MDz"/>
+                                <include reference="ibE-Gh-c6Q"/>
                                 <include reference="IuV-jX-iPf"/>
                                 <include reference="PTc-wu-h0k"/>
+                                <include reference="7Gz-w8-2HY"/>
+                                <include reference="nQK-Yq-WGd"/>
                                 <include reference="Cxa-WQ-dlU"/>
                                 <include reference="pRT-iR-Xjc"/>
                             </mask>
@@ -233,6 +233,7 @@
                         <viewControllerLayoutGuide type="bottom" id="dx0-VL-2Ww"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="L4o-BI-njQ">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
