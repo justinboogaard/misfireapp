@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -16,56 +17,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6ze-7X-iEh">
-                                <rect key="frame" x="256" y="114" width="89" height="30"/>
-                                <state key="normal" title="makeFriends">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="156" y="96" width="89" height="30"/>
-                                </variation>
-                                <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
-                                    <rect key="frame" x="93" y="156" width="194" height="30"/>
-                                </variation>
-                                <connections>
-                                    <action selector="makeFriends:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="HVp-ue-HAJ"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7t9-ZJ-kAn">
-                                <rect key="frame" x="272" y="147" width="57" height="30"/>
-                                <state key="normal" title="getRecs">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="172" y="134" width="57" height="30"/>
-                                </variation>
-                                <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
-                                    <rect key="frame" x="82" y="194" width="205" height="30"/>
-                                </variation>
-                                <connections>
-                                    <action selector="getRecs:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="SMg-k1-SWn"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cYf-OG-6Yt">
-                                <rect key="frame" x="208" y="76" width="184" height="30"/>
-                                <state key="normal" title="Load Data into Gui">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="136" y="20" width="129" height="30"/>
-                                </variation>
-                                <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
-                                    <rect key="frame" x="82" y="43" width="205" height="30"/>
-                                </variation>
-                                <connections>
-                                    <action selector="loadGUI:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="g0V-kt-GR9"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gar-ce-2QW">
-                                <rect key="frame" x="238" y="185" width="125" height="30"/>
+                                <rect key="frame" x="247" y="90" width="125" height="30"/>
                                 <state key="normal" title="Fetch Updates">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <variation key="heightClass=regular" misplaced="YES">
+                                    <rect key="frame" x="124" y="20" width="101" height="30"/>
+                                </variation>
                                 <variation key="widthClass=compact" fixedFrame="YES">
                                     <rect key="frame" x="150" y="58" width="101" height="30"/>
                                 </variation>
@@ -76,43 +35,139 @@
                                     <action selector="fetchUpdates:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="pCJ-BI-JY4"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ik7-J3-5Oe">
-                                <rect key="frame" x="231" y="38" width="139" height="30"/>
-                                <state key="normal" title="Send Cute Message">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6ze-7X-iEh" userLabel="MatchGenerator">
+                                <rect key="frame" x="231" y="317" width="157" height="53"/>
+                                <color key="backgroundColor" red="1" green="0.12174402037241927" blue="0.12523863326502804" alpha="1" colorSpace="calibratedRGB"/>
+                                <accessibility key="accessibilityConfiguration" label="Misfire"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="1ws-1i-ued"/>
+                                    <constraint firstAttribute="width" constant="200" id="zWz-Iu-SdH"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="Misfire">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <attributedString key="userComments">
+                                    <fragment content="Misfire">
+                                        <attributes>
+                                            <font key="NSFont" size="12" name="HelveticaNeue-Medium"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="1ws-1i-ued"/>
+                                        <exclude reference="zWz-Iu-SdH"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular">
+                                    <mask key="constraints">
+                                        <include reference="1ws-1i-ued"/>
+                                        <include reference="zWz-Iu-SdH"/>
+                                    </mask>
+                                </variation>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="131" y="172" width="139" height="30"/>
+                                    <rect key="frame" x="156" y="96" width="89" height="30"/>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
-                                    <rect key="frame" x="82" y="118" width="205" height="30"/>
+                                    <rect key="frame" x="93" y="156" width="194" height="30"/>
                                 </variation>
                                 <connections>
-                                    <action selector="sendCuteMessage:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="sP2-UV-EqC"/>
+                                    <action selector="makeFriends:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="HVp-ue-HAJ"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap the button to swipe right on matches you want to misfire." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fUZ-sb-R32">
+                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="192" id="ZPY-ds-BuF"/>
+                                    <constraint firstAttribute="height" constant="153" id="eOM-Pq-JNC"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="ZPY-ds-BuF"/>
+                                        <exclude reference="eOM-Pq-JNC"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular">
+                                    <mask key="constraints">
+                                        <include reference="ZPY-ds-BuF"/>
+                                        <include reference="eOM-Pq-JNC"/>
+                                    </mask>
+                                </variation>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Gar-ce-2QW" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="7Gz-w8-2HY"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="6ze-7X-iEh" secondAttribute="bottom" constant="163" id="Bge-pm-hZp"/>
+                            <constraint firstItem="fUZ-sb-R32" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" constant="194" id="C4o-GY-fkS"/>
+                            <constraint firstItem="6ze-7X-iEh" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="Ehv-oo-ruV"/>
+                            <constraint firstItem="fUZ-sb-R32" firstAttribute="centerX" secondItem="6ze-7X-iEh" secondAttribute="centerX" id="JDd-1C-IWx"/>
+                            <constraint firstItem="Gar-ce-2QW" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="6" id="nQK-Yq-WGd"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="fUZ-sb-R32"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="7Gz-w8-2HY"/>
+                                <exclude reference="nQK-Yq-WGd"/>
+                                <exclude reference="C4o-GY-fkS"/>
+                                <exclude reference="JDd-1C-IWx"/>
+                                <exclude reference="Ehv-oo-ruV"/>
+                                <exclude reference="Bge-pm-hZp"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular">
+                            <mask key="subviews">
+                                <include reference="fUZ-sb-R32"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="7Gz-w8-2HY"/>
+                                <include reference="nQK-Yq-WGd"/>
+                                <include reference="C4o-GY-fkS"/>
+                                <include reference="JDd-1C-IWx"/>
+                                <include reference="Ehv-oo-ruV"/>
+                                <include reference="Bge-pm-hZp"/>
+                            </mask>
+                        </variation>
                         <variation key="widthClass=compact">
                             <mask key="subviews">
-                                <include reference="7t9-ZJ-kAn"/>
-                                <include reference="cYf-OG-6Yt"/>
                                 <include reference="Gar-ce-2QW"/>
-                                <include reference="Ik7-J3-5Oe"/>
                             </mask>
                         </variation>
                     </view>
                     <connections>
-                        <outlet property="getRecsButton" destination="7t9-ZJ-kAn" id="8ON-8h-cxH"/>
-                        <outlet property="loadDataButton" destination="cYf-OG-6Yt" id="uth-HS-2gJ"/>
                         <outlet property="makeFriendsButton" destination="6ze-7X-iEh" id="z3A-AM-cjQ"/>
-                        <outlet property="sendCuteMessageButton" destination="Ik7-J3-5Oe" id="m9v-hS-BN4"/>
                         <outlet property="updatesButton" destination="Gar-ce-2QW" id="sUw-4K-wfi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="315" y="196"/>
+            <point key="canvasLocation" x="146" y="180"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="f2b-iW-vAD">
+            <objects>
+                <viewController id="8d7-Ad-1Qz" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="RPi-C8-a5T"/>
+                        <viewControllerLayoutGuide type="bottom" id="oYj-Bj-tUg"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Dvl-Zf-nFq">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fld-9D-Wes" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="863" y="180"/>
         </scene>
     </scenes>
 </document>

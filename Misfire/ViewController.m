@@ -101,43 +101,52 @@
     NSLog(@"TinderTokenFromSendCuteMessage: %@", client.api_token);
 }
 
-- (IBAction)getRecs:(id) sender{
-    [client sendRequestToUrl:@"recs" withPayload:@"{\"limit\": 10 }"];
-    client.currentConnection = GetRecs;
-}
+//- (IBAction)getRecs:(id) sender{
+//    [client sendRequestToUrl:@"recs" withPayload:@"{\"limit\": 10 }"];
+//    client.currentConnection = GetRecs;
+//}
 
 - (IBAction)makeFriends:(id) sender{
-    if (client.recArray.count ==0){
+
+    if (client.recArray.count < 2){
         [client sendRequestToUrl:@"recs" withPayload:@"{\"limit\": 10 }"];
         client.currentConnection = GetRecs;
+        
     } else{
-        NSLog(@"recArray: %@", client.recArray);
-            NSLog(@"making friends with %@", client.recArray[0]);
-            [client sendRequestToUrl:[NSString stringWithFormat:@"like/%@", client.recArray[0]]];
+        NSLog(@"recArray: %@", [[client.recArray objectAtIndex:0] objectForKey:@"id"]);
+            NSLog(@"making friends with %@", [[client.recArray objectAtIndex:0] objectForKey:@"id"]);
+            [client sendRequestToUrl:[NSString stringWithFormat:@"like/%@", [[client.recArray objectAtIndex:0] objectForKey:@"id"]]];
             [client.recArray removeObject:client.recArray.firstObject];
             client.currentConnection = MakeFriends;
+        
+        UIImageView *imgview = [[UIImageView alloc] initWithFrame:CGRectMake(00, 300, 50, 50)];
+        [imgview setImage:[[client.recArray objectAtIndex:0] objectForKey:@"picture"]];
+        [imgview setContentMode:UIViewContentModeScaleAspectFill];
+        [self.view addSubview:imgview];
     }
+    
+    
 }
 
-- (IBAction)loadGUI:(id)sender {
-    
-    UIImageView *imgview = [[UIImageView alloc] initWithFrame:CGRectMake(00, 300, 400, 400)];
-    
-    if (client.images.count > 0) {
-        [imgview setImage:client.images[0]];
-    }
-    
-    [imgview setContentMode:UIViewContentModeScaleAspectFit];
-    [self.view addSubview:imgview];
-    
-//    if (client.fullName) {
-//        self.connectionSuccessLabel.text = @"Success!";
-//        self.accountNameLabel.text = client.fullName;
-//    }
-//    
-//    
-//
-}
+////- (IBAction)loadGUI:(id)sender {
+////    
+////    UIImageView *imgview = [[UIImageView alloc] initWithFrame:CGRectMake(00, 300, 400, 400)];
+////    
+////    if (client.images.count > 0) {
+////        [imgview setImage:client.images[0]];
+////    }
+////    
+////    [imgview setContentMode:UIViewContentModeScaleAspectFit];
+////    [self.view addSubview:imgview];
+////    
+////    if (client.fullName) {
+////        self.connectionSuccessLabel.text = @"Success!";
+////        self.accountNameLabel.text = client.fullName;
+////    }
+////    
+////    
+////
+//}
 
 // PRAGMA MARK - FBLoginViewDelegate
 
@@ -149,6 +158,7 @@
     
     facebookToken = [[FBSession activeSession] accessTokenData].accessToken;
     client = [[TinderRootClient alloc] initWithFacebookData:facebookToken facebookID:facebookID];
+    client.myView = self;
     [client.connectionFeedBackOutlets addObject:self];
     [client authenticate];
     NSLog(@"connection created!");

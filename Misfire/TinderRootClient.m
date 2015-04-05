@@ -42,6 +42,7 @@
         self.misfireConvoArray = [[NSMutableArray alloc] init];
         self.recArray = [[NSMutableArray alloc] init];
         self.misfirePair = [[NSMutableArray alloc] init];
+    
     }
     
     return self;
@@ -259,13 +260,33 @@
             
             for (id element in jsonDictionary[@"results"]) {
                 
-                NSString *path = element[@"_id"];
-                NSLog(@"%@", path);
-                [self.recArray addObject:path];
+                NSMutableArray *tempImageArray = [NSMutableArray new];
+                for (id newElement in element[@"photos"]) {
+                    NSString *path = newElement[@"url"];
+                    NSURL *url = [NSURL URLWithString:path];
+                    NSData *data = [NSData dataWithContentsOfURL:url];
+                    UIImage *img = [[UIImage alloc] initWithData:data];
+                    
+                    [tempImageArray addObject:img];
                 }
+                
+                NSString *userId = element[@"_id"];
+                NSString *userName = element[@"name"];
+                
+                NSMutableDictionary *userDictionary =[[NSMutableDictionary alloc] init];
+                [userDictionary setObject:userId forKey:@"id"];
+                [userDictionary setObject:userName forKey:@"firstName"];
+                [userDictionary setObject:tempImageArray.firstObject forKey:@"picture"];
+                [self.recArray addObject:userDictionary];
+                NSLog(@"logging user with id %@", [[self.recArray lastObject] objectForKey:@"id"]);
             }
-        
-        
+            
+            UIImageView *imgview = [[UIImageView alloc] initWithFrame:CGRectMake(00, 300, 50, 50)];
+            [imgview setImage:[[self.recArray objectAtIndex:0] objectForKey:@"picture"]];
+            [imgview setContentMode:UIViewContentModeScaleAspectFill];
+            [self.myView.view addSubview:imgview];
+            
+        }
         
         
         //should i try to connect the friends to the rec function now that shin fixed the crash problem?

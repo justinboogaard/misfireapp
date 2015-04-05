@@ -8,8 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import "MisfireConvo.h"
+#import "ViewController.h"
 #import <UIKit/UIKit.h>
-
 
 @interface TinderRootClient : NSObject
 
@@ -67,6 +67,7 @@ typedef enum
 @property (strong, nonatomic) NSMutableArray *recArray;
 @property (strong, nonatomic) NSMutableArray *misfireConvoArray;
 @property (strong, nonatomic) NSMutableArray *misfirePair;
+@property (strong, nonatomic) UIViewController *myView;
 
 
 
