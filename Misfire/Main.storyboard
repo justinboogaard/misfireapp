@@ -224,7 +224,6 @@
         <!--Title-->
         <scene sceneID="aB7-Fv-m2H">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="9Gx-71-gqw" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="theMisfireConvoViewController" id="0RF-P3-j9Y" customClass="MisfireConvoViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ODk-Gn-jGz"/>
@@ -239,6 +238,7 @@
                     <navigationItem key="navigationItem" title="Title" id="qUB-9s-khJ"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9Gx-71-gqw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="124" y="580"/>
         </scene>
