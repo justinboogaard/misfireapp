@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <FacebookSDK/FacebookSDK.h>
+#import "MisfireConvoTableViewController.h"
 
 @interface ViewController : UIViewController <FBLoginViewDelegate>
 
@@ -20,6 +21,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *skipButton;
 @property (weak, nonatomic, readonly) UILabel *instructionText;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *segueButton;
 
 //@property (weak, nonatomic) IBOutlet UILabel *connectedLabel;
 //@property (weak, nonatomic) IBOutlet UILabel *connectionSuccessLabel;

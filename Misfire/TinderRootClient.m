@@ -300,18 +300,19 @@
 
             if ([[jsonDictionary objectForKey:@"match"] isKindOfClass:[NSNumber class]]) {
                 NSLog(@"no match here");
+                
+                //remove the object from the rec array that we just checked to see if there was a match
+                [self.recArray removeObject:self.recArray.firstObject];
             }
             else if ((jsonDictionary[@"match"][@"_id"])) {
                     NSString *matchID = (jsonDictionary[@"match"][@"_id"]);
                     NSLog(@"There was a match and the id is %@", matchID);
                 
-                    [self.recArray.firstObject setObject:matchID forKey:@"matchID"];
-                
                     [self.misfirePair addObject:self.recArray.firstObject];
                 
-                    [self.recArray removeObject:self.recArray.firstObject];
-                
-                NSLog(@"the misfire pair array just added %@", [[self.misfirePair objectAtIndex:0] objectForKey:@"matchID"]);
+               
+            
+                NSLog(@"the misfire pair array just added %@", [[self.misfirePair objectAtIndex:0] objectForKey:@"firstName"]);
                 
                 if (self.misfirePair.count == 1 ){
                     UIImageView *matchview = [[UIImageView alloc] initWithFrame:CGRectMake(30, 75, 100, 100)];
@@ -322,16 +323,34 @@
                 }
                     if (self.misfirePair.count == 2) {
                         NSLog(@"there are two match id's in the pair array so we're gonna initialize a new convo");
-                        MisfireConvo *fakeConvo = [[MisfireConvo alloc] initWithUniqueId:(@"%@_and_%@", [[self.misfirePair objectAtIndex:0] objectForKey:@"firstName"], [[self.misfirePair objectAtIndex:1] objectForKey:@"firstName"]) withPerson:(@"%@", [self.misfirePair objectAtIndex:0]) andPerson:(@"%@", [self.misfirePair objectAtIndex:1])];
-                        fakeConvo.myClient = self;
-                        [self.misfireConvoArray addObject:fakeConvo];
+                        MisfireConvo *newConvo = [[MisfireConvo alloc] initWithUniqueId:(@"%@ and %@", [[self.misfirePair objectAtIndex:0] objectForKey:@"firstName"], [[self.misfirePair objectAtIndex:1] objectForKey:@"firstName"]) withPerson:([self.misfirePair objectAtIndex:0]) andPerson:([self.misfirePair objectAtIndex:1])];
+                        newConvo.myClient = self;
+                        [self.misfireConvoArray addObject:newConvo];
+                        
+                        MisfireConvoViewController *viewController = [[MisfireConvoViewController alloc] init];
+
+                        
+                        viewController.convoData = newConvo;
+                        viewController.myMasterViewController = self.myView;
+                        
+                   
+                        
+                        [self.myView presentViewController:viewController animated:YES completion:nil];
+                        
                         [self.misfirePair removeAllObjects];
                         
-    }
+                        
+                    }
+                
+                //remove the object from the rec array that we just checked to see if there was a match
+                [self.recArray removeObject:self.recArray.firstObject];
+
             } else {
-                    NSLog(@"no match :(");
+                    NSLog(@"something bad happened when trying to make a match");
                 }
-            }
+            
+            
+        }
 
         
         self.responseData = nil;

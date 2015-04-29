@@ -8,8 +8,11 @@
 
 #import <Foundation/Foundation.h>
 #import "MisfireConvo.h"
+#import "MisfireConvoViewController.h"
 #import "ViewController.h"
 #import <UIKit/UIKit.h>
+
+@class ViewController;
 
 @interface TinderRootClient : NSObject
 

@@ -7,16 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		395FF5CE1AD8093E00E94614 /* MisfireConvoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 395FF5CD1AD8093E00E94614 /* MisfireConvoViewController.m */; };
 		39FD10901AD14D5500503361 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 39FD108E1AD14D5500503361 /* AppDelegate.m */; };
 		39FD10911AD14D5500503361 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 39FD108F1AD14D5500503361 /* Images.xcassets */; };
 		39FD10931AD14D5B00503361 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 39FD10921AD14D5B00503361 /* Info.plist */; };
 		39FD10951AD14D6200503361 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 39FD10941AD14D6200503361 /* main.m */; };
 		39FD10971AD14D7300503361 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 39FD10961AD14D7300503361 /* LaunchScreen.xib */; };
 		39FD10991AD14D7B00503361 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39FD10981AD14D7A00503361 /* Main.storyboard */; };
-		39FD10A01AD14D8900503361 /* Message.m in Sources */ = {isa = PBXBuildFile; fileRef = 39FD109B1AD14D8900503361 /* Message.m */; };
 		39FD10A11AD14D8900503361 /* MisfireConvo.m in Sources */ = {isa = PBXBuildFile; fileRef = 39FD109D1AD14D8900503361 /* MisfireConvo.m */; };
 		39FD10A21AD14D8900503361 /* TinderRootClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 39FD109F1AD14D8900503361 /* TinderRootClient.m */; };
 		39FD10A51AD14D9100503361 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39FD10A41AD14D9100503361 /* ViewController.m */; };
+		39FD10ED1AD1B51A00503361 /* SimpleTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 39FD10EC1AD1B51A00503361 /* SimpleTableCell.xib */; };
+		822528ACB4FB84598D83874C /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B44A7D391364943471B80AF /* libPods.a */; };
 		9ECB3B481ABE3F5000DAA0AC /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9ECB3B471ABE3F5000DAA0AC /* FacebookSDK.framework */; };
 		D95167A91A92F03700C3754D /* MisfireTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D95167A81A92F03700C3754D /* MisfireTests.m */; };
 /* End PBXBuildFile section */
@@ -32,6 +34,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2B44A7D391364943471B80AF /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		395FF5CC1AD8093E00E94614 /* MisfireConvoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MisfireConvoViewController.h; sourceTree = "<group>"; };
+		395FF5CD1AD8093E00E94614 /* MisfireConvoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MisfireConvoViewController.m; sourceTree = "<group>"; };
 		39FD108D1AD14D5500503361 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		39FD108E1AD14D5500503361 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		39FD108F1AD14D5500503361 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -39,15 +44,16 @@
 		39FD10941AD14D6200503361 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		39FD10961AD14D7300503361 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
 		39FD10981AD14D7A00503361 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		39FD109A1AD14D8900503361 /* Message.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Message.h; sourceTree = "<group>"; };
-		39FD109B1AD14D8900503361 /* Message.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Message.m; sourceTree = "<group>"; };
 		39FD109C1AD14D8900503361 /* MisfireConvo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MisfireConvo.h; sourceTree = "<group>"; };
 		39FD109D1AD14D8900503361 /* MisfireConvo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MisfireConvo.m; sourceTree = "<group>"; };
 		39FD109E1AD14D8900503361 /* TinderRootClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TinderRootClient.h; sourceTree = "<group>"; };
 		39FD109F1AD14D8900503361 /* TinderRootClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TinderRootClient.m; sourceTree = "<group>"; };
 		39FD10A31AD14D9100503361 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		39FD10A41AD14D9100503361 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		39FD10EC1AD1B51A00503361 /* SimpleTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SimpleTableCell.xib; sourceTree = "<group>"; };
+		7D1257FC2AAFAAE8AE95BE75 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		9ECB3B471ABE3F5000DAA0AC /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
+		BD1A50D2F07EA58BF33522BC /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		D95167891A92F03700C3754D /* Misfire.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Misfire.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D95167A21A92F03700C3754D /* MisfireTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MisfireTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D95167A71A92F03700C3754D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -60,6 +66,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9ECB3B481ABE3F5000DAA0AC /* FacebookSDK.framework in Frameworks */,
+				822528ACB4FB84598D83874C /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -77,17 +84,29 @@
 			isa = PBXGroup;
 			children = (
 				9ECB3B471ABE3F5000DAA0AC /* FacebookSDK.framework */,
+				2B44A7D391364943471B80AF /* libPods.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		515C224FDDAE2003DF768F9B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				BD1A50D2F07EA58BF33522BC /* Pods.debug.xcconfig */,
+				7D1257FC2AAFAAE8AE95BE75 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 		D95167801A92F03700C3754D = {
 			isa = PBXGroup;
 			children = (
+				39FD10EC1AD1B51A00503361 /* SimpleTableCell.xib */,
 				396F8FAC1ABC95E900F2EDEB /* Frameworks */,
 				D951678B1A92F03700C3754D /* Misfire */,
 				D95167A51A92F03700C3754D /* MisfireTests */,
 				D951678A1A92F03700C3754D /* Products */,
+				515C224FDDAE2003DF768F9B /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -107,10 +126,10 @@
 				39FD108E1AD14D5500503361 /* AppDelegate.m */,
 				39FD109E1AD14D8900503361 /* TinderRootClient.h */,
 				39FD109F1AD14D8900503361 /* TinderRootClient.m */,
-				39FD109A1AD14D8900503361 /* Message.h */,
-				39FD109B1AD14D8900503361 /* Message.m */,
 				39FD109C1AD14D8900503361 /* MisfireConvo.h */,
 				39FD109D1AD14D8900503361 /* MisfireConvo.m */,
+				395FF5CC1AD8093E00E94614 /* MisfireConvoViewController.h */,
+				395FF5CD1AD8093E00E94614 /* MisfireConvoViewController.m */,
 				39FD10A31AD14D9100503361 /* ViewController.h */,
 				39FD10A41AD14D9100503361 /* ViewController.m */,
 				39FD10961AD14D7300503361 /* LaunchScreen.xib */,
@@ -154,9 +173,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D95167AC1A92F03700C3754D /* Build configuration list for PBXNativeTarget "Misfire" */;
 			buildPhases = (
+				DC5B7FE43DA41023E1EBF574 /* Check Pods Manifest.lock */,
 				D95167851A92F03700C3754D /* Sources */,
 				D95167861A92F03700C3754D /* Frameworks */,
 				D95167871A92F03700C3754D /* Resources */,
+				F9A5BFEF113B25136829F8A7 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -229,6 +250,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				39FD10911AD14D5500503361 /* Images.xcassets in Resources */,
+				39FD10ED1AD1B51A00503361 /* SimpleTableCell.xib in Resources */,
 				39FD10971AD14D7300503361 /* LaunchScreen.xib in Resources */,
 				39FD10931AD14D5B00503361 /* Info.plist in Resources */,
 				39FD10991AD14D7B00503361 /* Main.storyboard in Resources */,
@@ -244,6 +266,39 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		DC5B7FE43DA41023E1EBF574 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		F9A5BFEF113B25136829F8A7 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		D95167851A92F03700C3754D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -253,7 +308,7 @@
 				39FD10901AD14D5500503361 /* AppDelegate.m in Sources */,
 				39FD10A11AD14D8900503361 /* MisfireConvo.m in Sources */,
 				39FD10A21AD14D8900503361 /* TinderRootClient.m in Sources */,
-				39FD10A01AD14D8900503361 /* Message.m in Sources */,
+				395FF5CE1AD8093E00E94614 /* MisfireConvoViewController.m in Sources */,
 				39FD10951AD14D6200503361 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -355,6 +410,7 @@
 		};
 		D95167AD1A92F03700C3754D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BD1A50D2F07EA58BF33522BC /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -370,6 +426,7 @@
 		};
 		D95167AE1A92F03700C3754D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7D1257FC2AAFAAE8AE95BE75 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				FRAMEWORK_SEARCH_PATHS = (

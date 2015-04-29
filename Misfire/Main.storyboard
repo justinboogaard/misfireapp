@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Title-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
                 <viewController id="vXZ-lx-hvc" customClass="ViewController" sceneMemberID="viewController">
@@ -17,24 +16,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gar-ce-2QW">
-                                <rect key="frame" x="247" y="90" width="125" height="30"/>
-                                <state key="normal" title="Fetch Updates">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <variation key="heightClass=regular" misplaced="YES">
-                                    <rect key="frame" x="124" y="20" width="101" height="30"/>
-                                </variation>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="150" y="58" width="101" height="30"/>
-                                </variation>
-                                <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
-                                    <rect key="frame" x="82" y="81" width="205" height="30"/>
-                                </variation>
-                                <connections>
-                                    <action selector="fetchUpdates:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="pCJ-BI-JY4"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6ze-7X-iEh" userLabel="MatchGenerator">
                                 <rect key="frame" x="231" y="317" width="157" height="53"/>
                                 <color key="backgroundColor" red="1" green="0.12174402037241927" blue="0.12523863326502804" alpha="1" colorSpace="calibratedRGB"/>
@@ -77,6 +58,24 @@
                                 </variation>
                                 <connections>
                                     <action selector="makeFriends:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="HVp-ue-HAJ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tR2-Uz-LuR">
+                                <rect key="frame" x="0.0" y="285" width="600" height="30"/>
+                                <state key="normal" title="Fetch Updates">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="heightClass=regular" misplaced="YES">
+                                    <rect key="frame" x="124" y="20" width="101" height="30"/>
+                                </variation>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="150" y="58" width="101" height="30"/>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
+                                    <rect key="frame" x="82" y="81" width="205" height="30"/>
+                                </variation>
+                                <connections>
+                                    <action selector="fetchUpdates:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="HE8-wO-CBQ"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap the button to swipe right on matches you want to misfire." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fUZ-sb-R32">
@@ -151,10 +150,18 @@
                                     </mask>
                                 </variation>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QKU-h4-91A">
+                                <rect key="frame" x="287" y="160" width="44" height="30"/>
+                                <state key="normal" title="Segue">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="0RF-P3-j9Y" kind="show" id="T2n-7k-gHW"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Gar-ce-2QW" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="7Gz-w8-2HY"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="6ze-7X-iEh" secondAttribute="bottom" constant="163" id="Cxa-WQ-dlU"/>
                             <constraint firstItem="MZJ-Fi-eqN" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="171" id="HEK-Nc-BIo"/>
                             <constraint firstItem="wfd-Rl-Sd5" firstAttribute="top" secondItem="6ze-7X-iEh" secondAttribute="bottom" constant="30" id="IuV-jX-iPf"/>
@@ -163,7 +170,6 @@
                             <constraint firstItem="fUZ-sb-R32" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" constant="194" id="eZu-Co-MDz"/>
                             <constraint firstItem="MZJ-Fi-eqN" firstAttribute="centerX" secondItem="fUZ-sb-R32" secondAttribute="centerX" id="et5-da-IEz"/>
                             <constraint firstItem="fUZ-sb-R32" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="ibE-Gh-c6Q"/>
-                            <constraint firstItem="Gar-ce-2QW" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="6" id="nQK-Yq-WGd"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="wfd-Rl-Sd5" secondAttribute="bottom" constant="89" id="pRT-iR-Xjc"/>
                         </constraints>
                         <variation key="default">
@@ -173,6 +179,8 @@
                                 <exclude reference="MZJ-Fi-eqN"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="Cxa-WQ-dlU"/>
+                                <exclude reference="pRT-iR-Xjc"/>
                                 <exclude reference="HEK-Nc-BIo"/>
                                 <exclude reference="P9M-yR-1jB"/>
                                 <exclude reference="et5-da-IEz"/>
@@ -180,10 +188,6 @@
                                 <exclude reference="ibE-Gh-c6Q"/>
                                 <exclude reference="IuV-jX-iPf"/>
                                 <exclude reference="PTc-wu-h0k"/>
-                                <exclude reference="7Gz-w8-2HY"/>
-                                <exclude reference="nQK-Yq-WGd"/>
-                                <exclude reference="Cxa-WQ-dlU"/>
-                                <exclude reference="pRT-iR-Xjc"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular">
@@ -193,6 +197,8 @@
                                 <include reference="MZJ-Fi-eqN"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="Cxa-WQ-dlU"/>
+                                <include reference="pRT-iR-Xjc"/>
                                 <include reference="HEK-Nc-BIo"/>
                                 <include reference="P9M-yR-1jB"/>
                                 <include reference="et5-da-IEz"/>
@@ -200,47 +206,86 @@
                                 <include reference="ibE-Gh-c6Q"/>
                                 <include reference="IuV-jX-iPf"/>
                                 <include reference="PTc-wu-h0k"/>
-                                <include reference="7Gz-w8-2HY"/>
-                                <include reference="nQK-Yq-WGd"/>
-                                <include reference="Cxa-WQ-dlU"/>
-                                <include reference="pRT-iR-Xjc"/>
-                            </mask>
-                        </variation>
-                        <variation key="widthClass=compact">
-                            <mask key="subviews">
-                                <include reference="Gar-ce-2QW"/>
                             </mask>
                         </variation>
                     </view>
+                    <navigationItem key="navigationItem" title="Title" id="bTG-TG-dE5"/>
                     <connections>
                         <outlet property="instructionText" destination="fUZ-sb-R32" id="FB1-Fn-obw"/>
                         <outlet property="makeFriendsButton" destination="6ze-7X-iEh" id="z3A-AM-cjQ"/>
                         <outlet property="nameLabel" destination="MZJ-Fi-eqN" id="U0p-oi-naf"/>
                         <outlet property="skipButton" destination="wfd-Rl-Sd5" id="Gnf-gc-bCe"/>
-                        <outlet property="updatesButton" destination="Gar-ce-2QW" id="sUw-4K-wfi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1026" y="222"/>
+            <point key="canvasLocation" x="124" y="-574"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="fjb-xd-ard">
+        <!--Title-->
+        <scene sceneID="aB7-Fv-m2H">
             <objects>
-                <viewController id="Q03-1m-ueJ" sceneMemberID="viewController">
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9Gx-71-gqw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController storyboardIdentifier="theMisfireConvoViewController" id="0RF-P3-j9Y" customClass="MisfireConvoViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="WHz-Af-bL7"/>
-                        <viewControllerLayoutGuide type="bottom" id="dx0-VL-2Ww"/>
+                        <viewControllerLayoutGuide type="top" id="ODk-Gn-jGz"/>
+                        <viewControllerLayoutGuide type="bottom" id="Qxa-td-FBN"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="L4o-BI-njQ">
+                    <view key="view" contentMode="scaleToFill" id="FUF-FN-hoQ">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Title" id="qUB-9s-khJ"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Ouf-ll-eRu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1026" y="893.25"/>
+            <point key="canvasLocation" x="124" y="580"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="DAk-Pf-pZO">
+            <objects>
+                <navigationController id="8o3-6M-w7w" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="9fw-x0-ovP">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="FtU-7G-sda" kind="relationship" relationship="rootViewController" id="Vah-I3-Ycl"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MGm-lx-9lO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="830" y="-550"/>
+        </scene>
+        <!--Misfire Convo Table View Controller-->
+        <scene sceneID="hM0-fn-Dm3">
+            <objects>
+                <tableViewController id="FtU-7G-sda" customClass="MisfireConvoTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="HJL-Qt-Jbv">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="N1K-eJ-kjV">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="N1K-eJ-kjV" id="3Sy-Lz-QHG">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="FtU-7G-sda" id="gjO-ew-yzy"/>
+                            <outlet property="delegate" destination="FtU-7G-sda" id="jrO-ET-7EW"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="7Oo-k2-YCY">
+                        <barButtonItem key="rightBarButtonItem" title="Fetch Updates" id="SkV-gA-pp3"/>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zWq-Fp-EWh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1562" y="-550"/>
         </scene>
     </scenes>
 </document>

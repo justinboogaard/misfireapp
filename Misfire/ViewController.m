@@ -122,13 +122,21 @@
         
             client.currentConnection = MakeFriends;
         
+//        //will this ever happen? the misfirePair gets reset
+//        if (client.misfirePair.count == 2) {
+//           MisfireConvoViewController *viewController = [[MisfireConvoViewController alloc] init];
+//            [self presentViewController:viewController animated:YES completion:nil];
+//            //ha! it will now!
+//            [client.misfirePair removeAllObjects];
+//        }
+        
         UIImageView *imgview = [[UIImageView alloc] initWithFrame:CGRectMake(00, 600, 200, 200)];
         [imgview setImage:[[client.recArray objectAtIndex:1] objectForKey:@"picture"]];
         [imgview setContentMode:UIViewContentModeScaleAspectFill];
         [imgview setCenter:self.view.center];
         [self.view addSubview:imgview];
         [self.nameLabel setText:[[client.recArray objectAtIndex:1] objectForKey:@"firstName"]];
-        [client.recArray removeObject:client.recArray.firstObject];
+
         
         
     }
@@ -136,7 +144,6 @@
 
 - (IBAction)skip:(id)sender{
     [client.recArray removeObject:client.recArray.firstObject];
-    client.currentConnection = MakeFriends;
     
     UIImageView *imgview = [[UIImageView alloc] initWithFrame:CGRectMake(00, 600, 200, 200)];
     [imgview setImage:[[client.recArray objectAtIndex:0] objectForKey:@"picture"]];
