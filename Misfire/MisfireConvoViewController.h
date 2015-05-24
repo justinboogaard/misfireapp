@@ -23,6 +23,8 @@
 @property (strong, nonatomic) ViewController *myMasterViewController;
 @property (strong, nonatomic) NSString *firstSender;
 
+@property (weak, nonatomic) IBOutlet UIButton *updatesButton;
+
 - (IBAction)fetchUpdates:(id)sender;
 
 @end

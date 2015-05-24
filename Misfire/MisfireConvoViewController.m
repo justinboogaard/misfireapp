@@ -256,6 +256,7 @@
 - (IBAction)fetchUpdates:(id)sender {
     
     [self.myMasterViewController fetchUpdates:(id) sender];
+    NSLog(@"Getting some new updates from the main controller!");
     
 }
 

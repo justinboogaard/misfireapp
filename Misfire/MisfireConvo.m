@@ -57,19 +57,19 @@
 
 //RelayMessage is called by the if statements of parseDict, parseDict will process the JSonDictionary that is handed to it, then depending on the id of who sent it, relay that message to the other person and save it in our conversation array
 //TODO i may need to add a check in the current conversation, because the JSONDict that fetchUpdates calls might not always be up to date
-- (void) relayMessage: (JSQMessage *)message {
+- (void) relayMessage: (JSQMessage *)message withMatchID: (NSString *)matchID{
     
     NSLog(@"the oldest timestamp is %@",self.oldestDate);
     NSLog(@"the messages timestamp is %@", message.date);
-    if (([message.senderId isEqualToString: [self.person1 objectForKey:@"id"]]) && ([message.date laterDate:self.oldestDate] == message.date)){
-        [self.myClient sendRequestToUrl:[NSString stringWithFormat:@"user/matches/%@", [self.person2 objectForKey:@"id"]] withPayload:[NSString stringWithFormat:@"{\"message\": \"%@\"}",message.text]];
+    if (([message.senderId isEqualToString: [self.person1 objectForKey:@"id"]]) && ([message.date laterDate:self.oldestDate] == message.date) && (message.date != self.oldestDate)){
+        [self.myClient sendRequestToUrl:[NSString stringWithFormat:@"user/matches/%@", matchID] withPayload:[NSString stringWithFormat:@"{\"message\": \"%@\"}",message.text]];
         NSLog(@"the message is newer, it's timestamp is bigger");
         NSLog(@"message sent!");
         [self addMessage:message];
         self.oldestMessage = self.convoLog.lastObject;
         self.oldestDate = self.oldestMessage.date;
-    } else if ([message.senderId isEqualToString: [self.person2 objectForKey:@"id"]] && ([message.date laterDate:self.oldestDate] == message.date)){
-        [self.myClient sendRequestToUrl:[NSString stringWithFormat:@"user/matches/%@", [self.person1 objectForKey:@"id"]] withPayload:[NSString stringWithFormat:@"{\"message\": \"%@\"}",message.text]];
+    } else if ([message.senderId isEqualToString: [self.person2 objectForKey:@"id"]] && ([message.date laterDate:self.oldestDate] == message.date) && (message.date != self.oldestDate)){
+        [self.myClient sendRequestToUrl:[NSString stringWithFormat:@"user/matches/%@", matchID] withPayload:[NSString stringWithFormat:@"{\"message\": \"%@\"}",message.text]];
         NSLog(@"the message had a smaller timestamp");
         [self addMessage:message];
         self.oldestMessage = self.convoLog.lastObject;
@@ -84,6 +84,7 @@
 - (void) addMessage:(JSQMessage *)message {
     //initialization needed to be broader, put it into initialization function 
     [self.convoLog addObject:message];
+
     NSLog(@"ConvoLog count = %lu", (unsigned long)self.convoLog.count);
 }
 
@@ -96,21 +97,21 @@
     for (id element in updatedDict) {
         
         NSTimeInterval cal = [element[@"timestamp"] doubleValue];
-        NSString *from = element[@"id"];
+        NSString *from = element[@"from"];
         NSDate *date = [NSDate dateWithTimeIntervalSince1970:cal];
         NSString *messageText = element[@"message"];
         
         
         
-        NSLog(@"From = %@, timestamp =%@ and messageText = %@", from, date, messageText);
+        NSLog(@"From = %@, timestamp = %@ and messageText = %@", from, date, messageText);
         if ([from isEqualToString:[self.person1 objectForKey:@"id"]]) {
             JSQMessage *newMessage = [[JSQMessage alloc] initWithSenderId:from senderDisplayName:self.person1Name date:date text:messageText];
             NSLog(@"*******");
             NSLog(@"Message is : %@", newMessage.text);
-            [self relayMessage:newMessage];
+            [self relayMessage:newMessage withMatchID:[self.person2 objectForKey:@"matchID"]];
         } else if ([from isEqualToString:[self.person2 objectForKey:@"id"]]) {
             JSQMessage *newMessage = [[JSQMessage alloc] initWithSenderId:from senderDisplayName:self.person2Name date:date text:messageText];
-            [self relayMessage:newMessage];
+            [self relayMessage:newMessage withMatchID:[self.person1 objectForKey:@"matchID"]];
         } else {
             NSLog(@"if loop did run");
         }

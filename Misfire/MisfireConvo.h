@@ -38,7 +38,7 @@
 
 
 - (id) initWithUniqueId:(NSString *)matchID withPerson:(NSMutableDictionary *)person1 andPerson:(NSMutableDictionary *)person2;
-- (void) relayMessage: (JSQMessage *)newMessage;
+- (void) relayMessage: (JSQMessage *)newMessage withMatchID: (NSString *)matchID;
 - (void) addMessage: (JSQMessage *)message;
 - (void) parseDict:(NSDictionary *)updatedSDict;
 

@@ -299,27 +299,30 @@
 //            MisfireConvo *newConvo = [[MisfireConvo alloc] initWithUniqueId:@"fakeConvo" withPerson:([self.recArray objectAtIndex:0]) andPerson:([self.recArray objectAtIndex:1])];
 //            NSLog(@"We instantiated convo %@ with %@ and %@", newConvo.matchID, newConvo.person1Name, newConvo.person2Name);
 //            
+//            newConvo.myClient = self;
+//            [self.misfireConvoArray addObject:newConvo];
+//            
+//            [self.myView performSegueWithIdentifier:@"mySegue" sender:self.myView];
+//            
 //            //make a fake message
 //            NSLog(@"making a fake message");
 //            JSQMessage *fakeMessage = [[JSQMessage alloc] initWithSenderId:newConvo.person1Name senderDisplayName:newConvo.person1Name date:[NSDate date] text:@"Yolo mofo"];
 //            //add fake message to newConvo
 //            [newConvo.convoLog addObject:fakeMessage];
 //            NSLog(@"The new fake message in the convoLog is %@", [newConvo.convoLog[0] text]);
-//          
+//
+//
 //            
-//            newConvo.myClient = self;
-//            [self.misfireConvoArray addObject:newConvo];
-//            
-//            // Fix below this line then move below
+//           //  Fix below this line then move below
 //            
 //            [self.myView performSegueWithIdentifier:@"mySegue" sender:self.myView];
 //            
 //            
-////            [self.myView presentViewController:viewController animated:YES completion:nil];
+//            [self.myView presentViewController:viewController animated:YES completion:nil];
 //            
-//            // fix above this line then move below
-//            
-//            [self.misfirePair removeAllObjects];
+            // fix above this line then move below
+            
+            [self.misfirePair removeAllObjects];
             
 // ^^^^^^^ this is testing data to make sure that the convoViewController is still working
             
@@ -339,13 +342,14 @@
             else if ((jsonDictionary[@"match"][@"_id"])) {
                     NSString *matchID = (jsonDictionary[@"match"][@"_id"]);
                     NSLog(@"There was a match and the id is %@", matchID);
-                
+                    //add the matchID to the user dictionary object so that you can send a message to the person matchID later
+                    [[self.recArray firstObject] setObject:matchID forKey:@"matchID"];
                 
                     [self.misfirePair addObject:self.recArray.firstObject];
                 
                
             
-                NSLog(@"the misfire pair array just added %@", [[self.misfirePair objectAtIndex:0] objectForKey:@"firstName"]);
+                NSLog(@"the misfire pair array just added %@ with match ID %@", [[self.misfirePair objectAtIndex:0] objectForKey:@"firstName"], [[self.misfirePair objectAtIndex:0] objectForKey:@"matchID"]);
                 
                 if (self.misfirePair.count == 1 ){
                     UIImageView *matchview = [[UIImageView alloc] initWithFrame:CGRectMake(30, 75, 100, 100)];
