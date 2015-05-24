@@ -18,7 +18,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.title =@"%@", self.convoData.matchID;
+    self.title = [self.convoData matchID];
     NSLog(@"The self.convoData is %@", self.convoData.matchID);
 
     JSQMessage *first = [self.convoData.convoLog firstObject];

@@ -63,7 +63,7 @@
     NSLog(@"the messages timestamp is %@", message.date);
     if (([message.senderId isEqualToString: [self.person1 objectForKey:@"id"]]) && ([message.date laterDate:self.oldestDate] == message.date)){
         [self.myClient sendRequestToUrl:[NSString stringWithFormat:@"user/matches/%@", [self.person2 objectForKey:@"id"]] withPayload:[NSString stringWithFormat:@"{\"message\": \"%@\"}",message.text]];
-        NSLog(@"the message had a bigger timestamp");
+        NSLog(@"the message is newer, it's timestamp is bigger");
         NSLog(@"message sent!");
         [self addMessage:message];
         self.oldestMessage = self.convoLog.lastObject;

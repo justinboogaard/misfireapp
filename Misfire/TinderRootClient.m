@@ -294,41 +294,34 @@
             
             
             
-            //AHH THIS IS WHAT WE'RE WORKING ON NOW!!
-            //AHH THIS IS WHAT WE'RE WORKING ON NOW!!
-            //AHH THIS IS WHAT WE'RE WORKING ON NOW!!
-            // this should all be deleted with the segue code moved downstairs after testing
-
-            NSLog(@"We're about to instantiate a fake convo");
-            MisfireConvo *newConvo = [[MisfireConvo alloc] initWithUniqueId:@"fakeConvo" withPerson:([self.recArray objectAtIndex:0]) andPerson:([self.recArray objectAtIndex:1])];
-            NSLog(@"We instantiated convo %@ with %@ and %@", newConvo.matchID, newConvo.person1Name, newConvo.person2Name);
+            //everything below here is a fake convo to make sure it's working
+//            NSLog(@"We're about to instantiate a fake convo");
+//            MisfireConvo *newConvo = [[MisfireConvo alloc] initWithUniqueId:@"fakeConvo" withPerson:([self.recArray objectAtIndex:0]) andPerson:([self.recArray objectAtIndex:1])];
+//            NSLog(@"We instantiated convo %@ with %@ and %@", newConvo.matchID, newConvo.person1Name, newConvo.person2Name);
+//            
+//            //make a fake message
+//            NSLog(@"making a fake message");
+//            JSQMessage *fakeMessage = [[JSQMessage alloc] initWithSenderId:newConvo.person1Name senderDisplayName:newConvo.person1Name date:[NSDate date] text:@"Yolo mofo"];
+//            //add fake message to newConvo
+//            [newConvo.convoLog addObject:fakeMessage];
+//            NSLog(@"The new fake message in the convoLog is %@", [newConvo.convoLog[0] text]);
+//          
+//            
+//            newConvo.myClient = self;
+//            [self.misfireConvoArray addObject:newConvo];
+//            
+//            // Fix below this line then move below
+//            
+//            [self.myView performSegueWithIdentifier:@"mySegue" sender:self.myView];
+//            
+//            
+////            [self.myView presentViewController:viewController animated:YES completion:nil];
+//            
+//            // fix above this line then move below
+//            
+//            [self.misfirePair removeAllObjects];
             
-            //make a fake message
-            NSLog(@"making a fake message");
-            JSQMessage *fakeMessage = [[JSQMessage alloc] initWithSenderId:newConvo.person1Name senderDisplayName:newConvo.person1Name date:[NSDate date] text:@"Yolo mofo"];
-            //add fake message to newConvo
-            [newConvo.convoLog addObject:fakeMessage];
-            NSLog(@"The new fake message in the convoLog is %@", [newConvo.convoLog.firstObject text]);
-            
-            
-            newConvo.myClient = self;
-            [self.misfireConvoArray addObject:newConvo];
-            
-            // Fix below this line then move below
-            
-            [self.myView performSegueWithIdentifier:@"mySegue" sender:self.myView];
-            
-            
-//            [self.myView presentViewController:viewController animated:YES completion:nil];
-            
-            // fix above this line then move below
-            
-            [self.misfirePair removeAllObjects];
-            
-            // delete everything between here after testing
-            //AHH FOCUS UP ABOVE!
-            //AHH FOCUS UP ABOVE!
-            //AHH FOCUS UP ABOVE!
+// ^^^^^^^ this is testing data to make sure that the convoViewController is still working
             
         }
         
@@ -364,10 +357,13 @@
                     if (self.misfirePair.count == 2) {
             
             
-                        NSLog(@"there are two match id's in the pair array so we're gonna initialize a new convo");
-                        MisfireConvo *newConvo = [[MisfireConvo alloc] initWithUniqueId:(@"%@ and %@", [[self.misfirePair objectAtIndex:0] objectForKey:@"firstName"], [[self.misfirePair objectAtIndex:1] objectForKey:@"firstName"]) withPerson:([self.misfirePair objectAtIndex:0]) andPerson:([self.misfirePair objectAtIndex:1])];
+                       
+                        MisfireConvo *newConvo = [[MisfireConvo alloc] initWithUniqueId:[NSString stringWithFormat:@"%@ and %@", [[self.misfirePair objectAtIndex:0] objectForKey:@"firstName"], [[self.misfirePair objectAtIndex:1] objectForKey:@"firstName"]] withPerson:([self.misfirePair objectAtIndex:0]) andPerson:([self.misfirePair objectAtIndex:1])];
                         newConvo.myClient = self;
+                         NSLog(@"there are two match id's in the pair array so we're gonna initialize convo %@ with %@ and %@", newConvo.matchID, newConvo.person1Name, newConvo.person2Name);
                         [self.misfireConvoArray addObject:newConvo];
+                        
+                        [self.myView performSegueWithIdentifier:@"mySegue" sender:self.myView];
             
             
             
@@ -383,15 +379,15 @@
             
                         
             // this is code that needs to be replaced with better testing code
-                        MisfireConvoViewController *viewController = [[MisfireConvoViewController alloc] init];
-
-                        
-                        viewController.convoData = newConvo;
-                        viewController.myMasterViewController = self.myView;
-                        
-                   
-                        
-                        [self.myView presentViewController:viewController animated:YES completion:nil];
+//                        MisfireConvoViewController *viewController = [[MisfireConvoViewController alloc] init];
+//
+//                        
+//                        viewController.convoData = newConvo;
+//                        viewController.myMasterViewController = self.myView;
+//                        
+//                   
+//                        
+//                        [self.myView presentViewController:viewController animated:YES completion:nil];
                         
                         [self.misfirePair removeAllObjects];
                         
