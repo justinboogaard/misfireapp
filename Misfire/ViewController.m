@@ -201,4 +201,17 @@
     [[FBSession activeSession] closeAndClearTokenInformation];
 }
 
+#pragma mark - Segues
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"mySegue"]) {
+        UINavigationController *nc = segue.destinationViewController;
+        MisfireConvoViewController *vc = (MisfireConvoViewController *)nc.topViewController;
+        
+        vc.convoData = client.misfireConvoArray.firstObject;
+        vc.myMasterViewController = self;
+    }
+}
+
 @end

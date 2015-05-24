@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14C2055" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
     </dependencies>
     <scenes>
         <!--Title-->
@@ -156,7 +156,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="0RF-P3-j9Y" kind="show" id="T2n-7k-gHW"/>
+                                    <segue destination="sIf-JB-WUd" kind="show" identifier="mySegue" id="QAs-sV-NGi"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -221,26 +221,40 @@
             </objects>
             <point key="canvasLocation" x="124" y="-574"/>
         </scene>
-        <!--Title-->
-        <scene sceneID="aB7-Fv-m2H">
+        <!--Navigation Controller-->
+        <scene sceneID="6yK-gg-I3p">
             <objects>
-                <viewController storyboardIdentifier="theMisfireConvoViewController" id="0RF-P3-j9Y" customClass="MisfireConvoViewController" sceneMemberID="viewController">
+                <navigationController id="sIf-JB-WUd" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="wLW-Kv-u62">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="FB6-Ok-ATw" kind="relationship" relationship="rootViewController" id="hlI-zT-ddB"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1hX-HP-lgt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="124" y="442"/>
+        </scene>
+        <!--Misfire Convo View Controller-->
+        <scene sceneID="RP3-DD-K2v">
+            <objects>
+                <viewController id="FB6-Ok-ATw" customClass="MisfireConvoViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="ODk-Gn-jGz"/>
-                        <viewControllerLayoutGuide type="bottom" id="Qxa-td-FBN"/>
+                        <viewControllerLayoutGuide type="top" id="x04-Ab-kR0"/>
+                        <viewControllerLayoutGuide type="bottom" id="h0R-Er-gbI"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="FUF-FN-hoQ">
+                    <view key="view" contentMode="scaleToFill" id="SBd-in-dZr">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Title" id="qUB-9s-khJ"/>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationItem key="navigationItem" id="mzm-U5-x35"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="9Gx-71-gqw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fBG-HC-CkK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="124" y="580"/>
+            <point key="canvasLocation" x="1164" y="442"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="DAk-Pf-pZO">

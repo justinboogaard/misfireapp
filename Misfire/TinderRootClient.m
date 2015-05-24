@@ -291,13 +291,52 @@
             NSLog(@"the name is %@",[[self.recArray objectAtIndex:0] objectForKey:@"firstName"]);
             self.myView.nameLabel.hidden = NO;
             self.myView.instructionText.hidden = YES;
+            
+            
+            
+            //AHH THIS IS WHAT WE'RE WORKING ON NOW!!
+            //AHH THIS IS WHAT WE'RE WORKING ON NOW!!
+            //AHH THIS IS WHAT WE'RE WORKING ON NOW!!
+            // this should all be deleted with the segue code moved downstairs after testing
+
+            NSLog(@"We're about to instantiate a fake convo");
+            MisfireConvo *newConvo = [[MisfireConvo alloc] initWithUniqueId:@"fakeConvo" withPerson:([self.recArray objectAtIndex:0]) andPerson:([self.recArray objectAtIndex:1])];
+            NSLog(@"We instantiated convo %@ with %@ and %@", newConvo.matchID, newConvo.person1Name, newConvo.person2Name);
+            
+            //make a fake message
+            NSLog(@"making a fake message");
+            JSQMessage *fakeMessage = [[JSQMessage alloc] initWithSenderId:newConvo.person1Name senderDisplayName:newConvo.person1Name date:[NSDate date] text:@"Yolo mofo"];
+            //add fake message to newConvo
+            [newConvo.convoLog addObject:fakeMessage];
+            NSLog(@"The new fake message in the convoLog is %@", [newConvo.convoLog.firstObject text]);
+            
+            
+            newConvo.myClient = self;
+            [self.misfireConvoArray addObject:newConvo];
+            
+            // Fix below this line then move below
+            
+            [self.myView performSegueWithIdentifier:@"mySegue" sender:self.myView];
+            
+            
+//            [self.myView presentViewController:viewController animated:YES completion:nil];
+            
+            // fix above this line then move below
+            
+            [self.misfirePair removeAllObjects];
+            
+            // delete everything between here after testing
+            //AHH FOCUS UP ABOVE!
+            //AHH FOCUS UP ABOVE!
+            //AHH FOCUS UP ABOVE!
+            
         }
         
         
 
         else if (self.currentConnection == MakeFriends){
             
-
+            
             if ([[jsonDictionary objectForKey:@"match"] isKindOfClass:[NSNumber class]]) {
                 NSLog(@"no match here");
                 
@@ -307,6 +346,7 @@
             else if ((jsonDictionary[@"match"][@"_id"])) {
                     NSString *matchID = (jsonDictionary[@"match"][@"_id"]);
                     NSLog(@"There was a match and the id is %@", matchID);
+                
                 
                     [self.misfirePair addObject:self.recArray.firstObject];
                 
@@ -322,11 +362,27 @@
                     
                 }
                     if (self.misfirePair.count == 2) {
+            
+            
                         NSLog(@"there are two match id's in the pair array so we're gonna initialize a new convo");
                         MisfireConvo *newConvo = [[MisfireConvo alloc] initWithUniqueId:(@"%@ and %@", [[self.misfirePair objectAtIndex:0] objectForKey:@"firstName"], [[self.misfirePair objectAtIndex:1] objectForKey:@"firstName"]) withPerson:([self.misfirePair objectAtIndex:0]) andPerson:([self.misfirePair objectAtIndex:1])];
                         newConvo.myClient = self;
                         [self.misfireConvoArray addObject:newConvo];
+            
+            
+            
+            
+//            //fake convo
+//            
+//            NSLog(@"We're about to instantiate a fake convo");
+//            MisfireConvo *newConvo = [[MisfireConvo alloc] initWithUniqueId:@"fakeConvo" withPerson:([self.recArray objectAtIndex:0]) andPerson:([self.recArray objectAtIndex:1])];
+//            newConvo.myClient = self;
+//            [self.misfireConvoArray addObject:newConvo];
+//            
+//            // end of fake data
+            
                         
+            // this is code that needs to be replaced with better testing code
                         MisfireConvoViewController *viewController = [[MisfireConvoViewController alloc] init];
 
                         
@@ -342,13 +398,15 @@
                         
                     }
                 
+                // ^^ replace between these two brackets
+                
                 //remove the object from the rec array that we just checked to see if there was a match
+        
                 [self.recArray removeObject:self.recArray.firstObject];
 
             } else {
                     NSLog(@"something bad happened when trying to make a match");
                 }
-            
             
         }
 
@@ -360,6 +418,7 @@
         NSLog(@"done loading");
         
     }
+
 }
 
 
