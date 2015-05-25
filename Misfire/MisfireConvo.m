@@ -92,8 +92,13 @@
 
 - (void) sendFakeMessage {
 NSLog(@"making a second fake message");
-JSQMessage *fakeMessage = [[JSQMessage alloc] initWithSenderId:self.person1Name senderDisplayName:self.person1Name date:[NSDate date] text:@"I'm a fake"];
+JSQMessage *fakeMessage = [[JSQMessage alloc] initWithSenderId:self.person1Name senderDisplayName:self.person1Name date:[NSDate date] text:@"How's it going?"];
 //add fake message to newConvo
+    
+    NSString *matchID = [self.person2 objectForKey:@"matchID"];
+    
+[self.myClient sendRequestToUrl:[NSString stringWithFormat:@"user/matches/%@", matchID] withPayload:[NSString stringWithFormat:@"{\"message\": \"%@\"}",fakeMessage.text]];
+
 [self.convoLog addObject:fakeMessage];
 NSLog(@"The last message added to the convoLog of %@ is %@", self.matchID, [self.convoLog.lastObject text]);
     NSLog(@"The current length of the convoLog is %lu", (unsigned long)self.convoLog.count);

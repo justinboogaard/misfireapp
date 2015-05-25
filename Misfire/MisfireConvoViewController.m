@@ -22,10 +22,6 @@
     self.firstSender = first.senderId;
     
     self.title = [self.convoData matchID];
-    NSLog(@"The self.convoData is %@", self.convoData.matchID);
-    NSLog(@"the next message will load in the view controller");
-    [self.convoData sendFakeMessage];
-    NSLog(@"The last fake message in the convoLog is %@", [self.convoData.convoLog.lastObject text]);
 
 }
 
@@ -259,7 +255,7 @@
 - (IBAction)fetchUpdates:(id)sender {
     
     [self.myMasterViewController fetchUpdates:(id) sender];
-    NSLog(@"Getting some new updates from the main controller!");
+    NSLog(@"Got updates from the main controller!");
     [self.collectionView reloadData];
     
 }
