@@ -14,6 +14,7 @@
 #import "JSQMessage.h"
 
 @class TinderRootClient;
+@class MisfireConvoViewController;
 @class JSQMessage;
 @class JSQMessagesAvatarImage;
 @class JSQMessagesBubbleImage;
@@ -33,6 +34,7 @@
 @property (nonatomic, strong) JSQMessagesAvatarImage *person2Avatar;
 @property (strong, nonatomic) JSQMessagesBubbleImage *outgoingBubbleImageData;
 @property (strong, nonatomic) JSQMessagesBubbleImage *incomingBubbleImageData;
+@property (strong, nonatomic) MisfireConvoViewController *convoView;
 
 
 

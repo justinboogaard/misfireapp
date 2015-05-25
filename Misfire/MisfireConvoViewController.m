@@ -18,6 +18,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    self.convoData.convoView = self;
+    
     JSQMessage *first = [self.convoData.convoLog firstObject];
     self.firstSender = first.senderId;
     
@@ -256,7 +258,6 @@
     
     [self.myMasterViewController fetchUpdates:(id) sender];
     NSLog(@"Got updates from the main controller!");
-    [self.collectionView reloadData];
     
 }
 

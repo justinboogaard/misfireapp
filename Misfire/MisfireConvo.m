@@ -84,6 +84,8 @@
 - (void) addMessage:(JSQMessage *)message {
     //initialization needed to be broader, put it into initialization function 
     [self.convoLog addObject:message];
+    [self.convoView.collectionView reloadData];
+    NSLog(@"reloaded the collectionView");
 
     NSLog(@"ConvoLog count = %lu", (unsigned long)self.convoLog.count);
 }
@@ -92,7 +94,7 @@
 
 - (void) sendFakeMessage {
 NSLog(@"making a second fake message");
-JSQMessage *fakeMessage = [[JSQMessage alloc] initWithSenderId:self.person1Name senderDisplayName:self.person1Name date:[NSDate date] text:@"How's it going?"];
+JSQMessage *fakeMessage = [[JSQMessage alloc] initWithSenderId:self.person1Name senderDisplayName:@"you sent this" date:[NSDate date] text:@"How's it going?"];
 //add fake message to newConvo
     
     NSString *matchID = [self.person2 objectForKey:@"matchID"];
@@ -118,7 +120,6 @@ NSLog(@"The last message added to the convoLog of %@ is %@", self.matchID, [self
         NSString *from = element[@"from"];
         NSDate *date = [NSDate dateWithTimeIntervalSince1970:cal];
         NSString *messageText = element[@"message"];
-        
         
         
         NSLog(@"From = %@, timestamp = %@ and messageText = %@", from, date, messageText);
