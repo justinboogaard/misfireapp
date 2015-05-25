@@ -41,6 +41,8 @@
 - (void) relayMessage: (JSQMessage *)newMessage withMatchID: (NSString *)matchID;
 - (void) addMessage: (JSQMessage *)message;
 - (void) parseDict:(NSDictionary *)updatedSDict;
+//dummy data
+- (void) sendFakeMessage;
 
 @end
 

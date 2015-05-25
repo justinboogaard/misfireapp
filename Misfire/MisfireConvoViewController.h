@@ -26,5 +26,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *updatesButton;
 
 - (IBAction)fetchUpdates:(id)sender;
+- (IBAction)sendFakeMessageButton:(id)sender;
 
 @end

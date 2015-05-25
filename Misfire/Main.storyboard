@@ -251,6 +251,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="mzm-U5-x35">
+                        <barButtonItem key="leftBarButtonItem" title="Send fake" id="3wS-j4-D26">
+                            <connections>
+                                <action selector="sendFakeMessageButton:" destination="FB6-Ok-ATw" id="RCO-yd-JX0"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="plain" id="QPp-SA-8Af">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="epv-mN-ihn">
                                 <rect key="frame" x="-23" y="-15" width="133" height="30"/>

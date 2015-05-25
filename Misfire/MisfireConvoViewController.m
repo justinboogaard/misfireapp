@@ -260,5 +260,12 @@
     
 }
 
+// the code below is for testing purposes only
+
+- (IBAction)sendFakeMessageButton:(id)sender {
+    [self.convoData sendFakeMessage];
+}
+
+// the code above is for testing purposes only
 
 @end

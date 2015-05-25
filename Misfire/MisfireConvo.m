@@ -88,6 +88,19 @@
     NSLog(@"ConvoLog count = %lu", (unsigned long)self.convoLog.count);
 }
 
+//THE BELOW IS TEST CODE ONLY
+
+- (void) sendFakeMessage {
+NSLog(@"making a second fake message");
+JSQMessage *fakeMessage = [[JSQMessage alloc] initWithSenderId:self.person1Name senderDisplayName:self.person1Name date:[NSDate date] text:@"I'm a fake"];
+//add fake message to newConvo
+[self.convoLog addObject:fakeMessage];
+NSLog(@"The new fake message in the convoLog of %@ is %@", self.matchID, [self.convoLog.lastObject text]);
+    NSLog(@"The current length of the convoLog is %lu", (unsigned long)self.convoLog.count);
+}
+
+//THE ABOVE IS TEST CODE ONLY
+
 //something that tells the convo to update itself
 - (void) parseDict:(NSDictionary *)updatedDict{
     //for loop

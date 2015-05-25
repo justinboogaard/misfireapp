@@ -295,21 +295,20 @@
             
             
             //everything below here is a fake convo to make sure it's working
-//            NSLog(@"We're about to instantiate a fake convo");
-//            MisfireConvo *newConvo = [[MisfireConvo alloc] initWithUniqueId:@"fakeConvo" withPerson:([self.recArray objectAtIndex:0]) andPerson:([self.recArray objectAtIndex:1])];
-//            NSLog(@"We instantiated convo %@ with %@ and %@", newConvo.matchID, newConvo.person1Name, newConvo.person2Name);
-//            
-//            newConvo.myClient = self;
-//            [self.misfireConvoArray addObject:newConvo];
-//            
-//            [self.myView performSegueWithIdentifier:@"mySegue" sender:self.myView];
-//            
-//            //make a fake message
-//            NSLog(@"making a fake message");
-//            JSQMessage *fakeMessage = [[JSQMessage alloc] initWithSenderId:newConvo.person1Name senderDisplayName:newConvo.person1Name date:[NSDate date] text:@"Yolo mofo"];
-//            //add fake message to newConvo
-//            [newConvo.convoLog addObject:fakeMessage];
-//            NSLog(@"The new fake message in the convoLog is %@", [newConvo.convoLog[0] text]);
+            NSLog(@"We're about to instantiate a fake convo");
+            MisfireConvo *newConvo = [[MisfireConvo alloc] initWithUniqueId:@"fakeConvo" withPerson:([self.recArray objectAtIndex:0]) andPerson:([self.recArray objectAtIndex:1])];
+            NSLog(@"We instantiated convo %@ with %@ and %@", newConvo.matchID, newConvo.person1Name, newConvo.person2Name);
+            
+            newConvo.myClient = self;
+            [self.misfireConvoArray addObject:newConvo];
+            [self.myView performSegueWithIdentifier:@"mySegue" sender:self.myView];
+
+            //make a fake message
+            NSLog(@"making a fake message");
+            JSQMessage *fakeMessage = [[JSQMessage alloc] initWithSenderId:newConvo.person1Name senderDisplayName:newConvo.person1Name date:[NSDate date] text:@"Yolo mofo"];
+            //add fake message to newConvo
+            [newConvo.convoLog addObject:fakeMessage];
+            NSLog(@"The new fake message in the convoLog is %@", [newConvo.convoLog[0] text]);
 //
 //
 //            
