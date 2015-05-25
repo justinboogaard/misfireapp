@@ -20,6 +20,9 @@
     
     self.title = [self.convoData matchID];
     NSLog(@"The self.convoData is %@", self.convoData.matchID);
+    NSLog(@"the next message will load in the view controller");
+    [self.convoData sendFakeMessage];
+    NSLog(@"The last fake message in the convoLog is %@", [self.convoData.convoLog.lastObject text]);
 
     JSQMessage *first = [self.convoData.convoLog firstObject];
     self.firstSender = first.senderId;

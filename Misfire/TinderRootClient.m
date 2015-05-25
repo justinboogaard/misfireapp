@@ -301,7 +301,6 @@
             
             newConvo.myClient = self;
             [self.misfireConvoArray addObject:newConvo];
-            [self.myView performSegueWithIdentifier:@"mySegue" sender:self.myView];
 
             //make a fake message
             NSLog(@"making a fake message");
@@ -309,9 +308,13 @@
             //add fake message to newConvo
             [newConvo.convoLog addObject:fakeMessage];
             NSLog(@"The new fake message in the convoLog is %@", [newConvo.convoLog[0] text]);
+            
+            [self.myView performSegueWithIdentifier:@"mySegue" sender:self.myView];
+            
+
 //
 //
-//            
+//
 //           //  Fix below this line then move below
 //            
 //            [self.myView performSegueWithIdentifier:@"mySegue" sender:self.myView];
@@ -322,6 +325,7 @@
             // fix above this line then move below
             
             [self.misfirePair removeAllObjects];
+
             
 // ^^^^^^^ this is testing data to make sure that the convoViewController is still working
             

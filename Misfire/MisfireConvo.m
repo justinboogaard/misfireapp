@@ -95,7 +95,7 @@ NSLog(@"making a second fake message");
 JSQMessage *fakeMessage = [[JSQMessage alloc] initWithSenderId:self.person1Name senderDisplayName:self.person1Name date:[NSDate date] text:@"I'm a fake"];
 //add fake message to newConvo
 [self.convoLog addObject:fakeMessage];
-NSLog(@"The new fake message in the convoLog of %@ is %@", self.matchID, [self.convoLog.lastObject text]);
+NSLog(@"The last message added to the convoLog of %@ is %@", self.matchID, [self.convoLog.lastObject text]);
     NSLog(@"The current length of the convoLog is %lu", (unsigned long)self.convoLog.count);
 }
 
